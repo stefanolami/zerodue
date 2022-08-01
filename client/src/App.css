@@ -1,16 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+  font-family: 'Varela Round', sans-serif;
+  --color-green: #81d656;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  width: 280px;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  margin: 30px;
+}
+
+svg {
+  width: 4em;
+  fill: black;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 0;
+  padding-top: 7em;
+  justify-content: center;
+}
+
+.main-nav li {
+  display:inline-block;
+  border: 2.5px solid black;
+  padding: 1em;
+  margin: .75em;
+  border-radius: 14px;
 }
 
 .App-header {
@@ -23,6 +50,100 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.addForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+
+
+
+
+/* label div {
+  align-self: flex-end;
+} */
+
+.addForm input[type="text"],
+.addForm input[type="tel"],
+.addForm input[type="email"] {
+  max-width: 600px;
+  width: 100%;
+  height: 2.5em;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 7px;
+  font-size: 1rem;
+}
+
+textarea {
+  max-width: 600px;
+  width: 100%;
+  height: 60px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 7px;
+  font-size: 1rem;
+}
+
+.aggiungiBtn {
+  width: 40%;
+  height: 45px;
+  margin: 25px auto;
+  font-size: 1em;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: 2px solid var(--color-green);
+  box-shadow: none;
+}
+
+.formDiv2 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid black;
+  border-radius: 4px;
+  top: 8px;
+  left: 110%;
+  height: 67%;
+  padding: 15px;
+}
+
+
+.formDiv2 label div {
+  font-size: .9em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+/* .commercialInfo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin: 12px auto;
+} */
+
+/* label {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+/* .compra input:first-child {
+  margin-right: 20px;
+} */
 
 .App-link {
   color: #61dafb;
