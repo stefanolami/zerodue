@@ -6,13 +6,15 @@ import Search from './Search'
 const Header = () => {
     return (
         <header>
-            <Search />
             <Link to="/">
                 <img className="logo" alt="Zerodue Logo" src={logo} />
             </Link>
-            <Link to="/add" className="addLink">
-                <button className="addLinkBtn">Aggiungi</button>
-            </Link>  
+            <div className="subHeader">
+                <Search />
+                <Link to="/add" className="addLink">
+                    <button className="addLinkBtn">Aggiungi</button>
+                </Link>
+            </div>
         </header>
     )
 }
