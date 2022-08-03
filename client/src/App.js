@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Add from './components/Add';
 import Shop from './components/Shop';
+import AdvancedSearch from './components/AdvancedSearch'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<Add />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/advsearch" element={<AdvancedSearch />} />
         </Routes>
       </div>
     </BrowserRouter>

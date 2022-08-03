@@ -1,9 +1,9 @@
 import React from "react";
 
-const Add = () => {
+const AdvancedSearch = () => {
     return (
         <div className="formDiv">
-        <h2>Aggiungi Negozio</h2>
+        <h2>Ricerca Avanzata</h2>
             <form className="addForm">
                 <div className="formDiv1">
                     <input type="text" placeholder="Nome" id="name" />
@@ -49,10 +49,10 @@ const Add = () => {
                     </label>
                 </div>
             </form>
-            <button className="addBtn">Aggiungi</button>
+            <button className="addBtn">Cerca</button>
         </div>
         
     )
 }
 
-export default Add;
+export default AdvancedSearch;
