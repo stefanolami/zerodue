@@ -191,12 +191,12 @@ header {
 
 /* Add Form  */
 
-.formDiv {
+.addForm {
   margin: auto;
   width: 50%;
 }
 
-.addForm {
+.formDiv {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -250,7 +250,7 @@ textarea {
   width: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .formDiv2 {

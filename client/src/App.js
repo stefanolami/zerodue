@@ -7,6 +7,10 @@ import Add from './components/Add';
 import Shop from './components/Shop';
 import AdvancedSearch from './components/AdvancedSearch'
 
+import withContext from './Context';
+
+const AddWithContext = withContext(Add);
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/add" element={<Add />} />
+          <Route path="/add" element={<AddWithContext />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/advsearch" element={<AdvancedSearch />} />
         </Routes>
