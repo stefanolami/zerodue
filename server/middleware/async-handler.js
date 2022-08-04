@@ -4,12 +4,7 @@ exports.asyncHandler = (cb) => {
       try {
         await cb(req,res, next);
       } catch(err){
-        if (err.code === "ER_BAD_NULL_ERROR") {
-          const validationErrors = err.errors.map(err => err.message)
-          res.status(400).json({validationErrors});
-        } else {
-          next(err);
-        }
+        next(err);
       }
     };
 }

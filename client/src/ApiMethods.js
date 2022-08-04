@@ -23,9 +23,10 @@ export default class Methods {
         if (response.status === 201) {
             return true
         } else if (response.status === 400) {
-            return response.json().then(data => {
+          return response
+            /* return response.json().then(data => {
                 return data.validationErrors;
-            })
+            }) */
         } else {
             throw new Error();
         }

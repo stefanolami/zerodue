@@ -11,7 +11,7 @@ const Header = () => {
                 <img className="logo" alt="Zerodue Logo" src={logo} />
             </Link>
             <Link to="/add" className="addLink">
-                <button className="addLinkBtn">Aggiungi</button>
+                <button className="addLinkBtn">Aggiungi Negozio</button>
             </Link>  
         </header>
     )

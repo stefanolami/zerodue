@@ -20,53 +20,44 @@ const Add = (props) => {
     const [imbustato, setImbustato] = useState();
     const [sfuso, setSfuso] = useState();
     const [note, setNote] = useState();
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState();
 
     const submit = (e) => {
         e.preventDefault();
         const shop = {
             nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
         }
-        props.context.actions.createShop(shop)
+        if (nome) {
+            props.context.actions.createShop(shop)
             .then(res => {
                 if (res === true) {
                     navigate("/")
-                } 
-            })
-            .catch((error, res) => {
-                if (res.status === 400) {
-                    console.log("ciao");
-                    setErrors(res);
-                } else {
-                    console.log(error);
-                    /* navigate('/error'); */
+                } else if (res.status === 400) {
+                    setErrors("Inserisci un nome");
                 }
-                
             })
+            .catch(err => {
+                console.log(err);
+                /* navigate('/error'); */
+            })
+        } else {
+            setErrors("Inserisci un nome");
+        }
     }
-
 
     return (
         <div>
             <h2>Aggiungi Negozio</h2>
             {
-                    errors.length > 0 ? (
-                        <div className="validation--errors">
-                            <h3>Validation Errors</h3>
-                            <ul>
-                                {
-                                    errors.map((error, index) => {
-                                        return (
-                                            <li key={index}>{error}</li>
-                                        )
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    ) : (
-                        <React.Fragment></React.Fragment>
-                    )
-                }
+                !errors ? (
+                    <React.Fragment></React.Fragment>
+                ) : (
+                    <div className="validationErrors">
+                        <h3>Errore di Validazione</h3>
+                        <p>{errors}</p>
+                    </div>
+                )
+            }
             <form className="addForm" onSubmit={submit}>
                 <div className="formDiv">
                     <div className="formDiv1">
