@@ -31,6 +31,19 @@ export default class Methods {
             throw new Error();
         }
     }
+
+    async getShop(id) {
+      const response = await this.api(`/shop/${id}`, 'GET');
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      }
+      else if (response.status === 404) {
+        return null;
+      }
+      else {
+        throw new Error();
+      }
+    }
   
     async getUser(username, password) {
       const response = await this.api(`/users`, 'GET', null, true, {username, password});

@@ -52,6 +52,40 @@ router.post('/create',asyncHandler(async (req, res) => {
             }
         }
     )
+}));
+
+router.get('/shops', asyncHandler(async (req, res) => {
+    
+
+    db.query(
+        'SELECT * FROM shops', (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else {
+                
+                res.status(200).send(result);
+            }
+        }
+    )
+}))
+
+router.get('/shop/:id', asyncHandler(async (req, res) => {
+    const id = req.params.id;
+
+    db.query(
+        'SELECT * FROM shops WHERE id = ?', id, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('Shop not found')
+            } else {
+                console.log(result)
+                res.status(200).send(result);
+            }
+        }
+    )
 }))
 
 module.exports = router;

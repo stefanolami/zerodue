@@ -17,12 +17,17 @@ export class Provider extends Component {
         return await this.apiMethods.createShop(shop);
     }
 
+    getShop = async (id) => {
+        return await this.apiMethods.getShop(id);
+    }
+
     render() {
 
         const value = {
             compra: this.state.compra,
             actions: {
-                createShop: this.createShop
+                createShop: this.createShop,
+                getShop: this.getShop
             }
         }
 
