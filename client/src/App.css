@@ -295,6 +295,34 @@ textarea {
 }
 
 
+/* ShopsList */
+
+.shopsListDiv {
+  width: 70%;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.shopsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.shopsList li {
+  display:  flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.shopsListName {
+  width: 30%;
+}
+
+
+
 /* Errors */
 
 .validationErrors {

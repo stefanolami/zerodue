@@ -9,7 +9,7 @@ export class Provider extends Component {
         super();
         this.apiMethods = new Methods();
         this.state = {
-            compra: true
+            shopsList: []
         }
     }
 
@@ -21,13 +21,27 @@ export class Provider extends Component {
         return await this.apiMethods.getShop(id);
     }
 
+    getShopsByPlace = async (place) => {
+        return await this.apiMethods.getShopsByPlace(place);
+    }
+
+    setShopsList = (list) => {
+        this.setState(() => {
+            return {
+                shopsList: list
+            }
+        })
+    }
+
     render() {
 
         const value = {
-            compra: this.state.compra,
+            shopsList: this.state.shopsList,
             actions: {
                 createShop: this.createShop,
-                getShop: this.getShop
+                getShop: this.getShop,
+                getShopsByPlace: this.getShopsByPlace,
+                setShopsList: this.setShopsList
             }
         }
 

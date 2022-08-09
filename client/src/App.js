@@ -11,6 +11,7 @@ import Error from './components/Error';
 
 import withContext from './Context';
 
+const HomeWithContext = withContext(Home);
 const AddWithContext = withContext(Add);
 const ShopWithContext = withContext(Shop);
 
@@ -20,7 +21,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeWithContext />} />
           <Route path="/add" element={<AddWithContext />} />
           <Route path="/shop/:id" element={<ShopWithContext />} />
           <Route path="/advsearch" element={<AdvancedSearch />} />

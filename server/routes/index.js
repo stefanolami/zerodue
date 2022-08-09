@@ -54,16 +54,16 @@ router.post('/create',asyncHandler(async (req, res) => {
     )
 }));
 
-router.get('/shops', asyncHandler(async (req, res) => {
+router.get('/shops/:place', asyncHandler(async (req, res) => {
     
+    const place = req.params.place;
 
     db.query(
-        'SELECT * FROM shops', (err, result) => {
+        'SELECT * FROM shops WHERE provincia = ?', place, (err, result) => {
             if (err) {
                 console.log(err.sqlMessage);
                 res.send(err);
             } else {
-                
                 res.status(200).send(result);
             }
         }
@@ -71,6 +71,7 @@ router.get('/shops', asyncHandler(async (req, res) => {
 }))
 
 router.get('/shop/:id', asyncHandler(async (req, res) => {
+
     const id = req.params.id;
 
     db.query(

@@ -2,16 +2,28 @@ import React, {useState} from "react";
 import {NavLink} from 'react-router-dom';
 import italia from '../geography';
 
-const Home = () => {
+import ShopsList from './ShopsList';
+
+import withContext from '../Context';
+
+const ShopsListWithContext = withContext(ShopsList)
+
+const Home = (props) => {
 
     const [regioni, setRegioni] = useState(italia);
     const [province, setProvince] = useState([]);
+    const [shops, setShops] = useState([]);
 
     const showCities = (reg, index) => {
         setProvince(regioni.italia[reg]);
     }
 
-    
+    const showShops = (prov) => {
+        props.context.actions.getShopsByPlace(prov)
+            .then(res => props.context.actions.setShopsList(res))
+            .catch(err => console.log(err.message))
+        
+    }
 
     return (
         <div>
@@ -48,7 +60,7 @@ const Home = () => {
                     province ? (
                         province.map((prov, index) => {
                             return (
-                                <button key={index}>{prov}</button>
+                                <button onClick={() => showShops(prov)} key={index}>{prov}</button>
                             )
                         })
                     ) : (
@@ -56,6 +68,7 @@ const Home = () => {
                     )
                 }
             </div>
+            <ShopsListWithContext />
         </div>
     );
 };
