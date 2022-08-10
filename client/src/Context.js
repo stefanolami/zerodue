@@ -25,6 +25,14 @@ export class Provider extends Component {
         return await this.apiMethods.getShopsByPlace(place);
     }
 
+    searchShops = async (query) => {
+        return await this.apiMethods.searchShops(query);
+    }
+
+    searchAdvanced = async (shop) => {
+        return await this.apiMethods.searchAdvanced(shop);
+    }
+
     setShopsList = (list) => {
         this.setState(() => {
             return {
@@ -41,7 +49,9 @@ export class Provider extends Component {
                 createShop: this.createShop,
                 getShop: this.getShop,
                 getShopsByPlace: this.getShopsByPlace,
-                setShopsList: this.setShopsList
+                setShopsList: this.setShopsList,
+                searchShops: this.searchShops,
+                searchAdvanced: this.searchAdvanced
             }
         }
 

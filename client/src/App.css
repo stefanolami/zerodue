@@ -297,28 +297,30 @@ textarea {
 
 /* ShopsList */
 
-.shopsListDiv {
+.shopsList {
   width: 70%;
   margin: 40px auto;
   text-align: left;
-}
-
-.shopsList {
-  list-style: none;
   display: flex;
   flex-direction: column;
+  background-color: black;
 }
 
-.shopsList li {
-  display:  flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 10px;
-  border: 1px solid black;
+.shopsListDiv {
+  display: grid;
+  grid-template-columns: repeat(4, calc(25% - 1.5px));
+  column-gap: 2px;
+  margin: 0 2px 2px 2px;
 }
 
-.shopsListName {
-  width: 30%;
+.shopsListDiv div {
+  padding: 8px;
+  background-color: white;
+  color: black;
+}
+
+.shopsList a:first-child {
+  margin-top: 2px;
 }
 
 

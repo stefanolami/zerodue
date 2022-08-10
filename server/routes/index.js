@@ -89,4 +89,50 @@ router.get('/shop/:id', asyncHandler(async (req, res) => {
     )
 }))
 
+
+router.get('/search/:query', asyncHandler( async (req, res) => {
+
+    const query = req.params.query;
+
+    db.query(
+        'SELECT * FROM shops WHERE nome LIKE "%' + query + '%" OR indirizzo LIKE "%' + query + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefonoReferente = ? OR note  = ?',
+        [query, query, query, query, query, query, query, query, query, query], (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('Nothing found')
+            } else {
+                console.log(result)
+                res.status(200).send(result);
+            }
+        }
+    )
+}))
+
+router.get('/advsearch', asyncHandler( async (req, res) => {
+
+    /* let nome = req.body.nome;
+    let indirizzo = req.body.indirizzo;
+    let cap = req.body.cap; */
+    const {nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note} = req.body.shop
+
+    console.log(req.body.shop)
+
+    db.query(
+        'SELECT * FROM shops WHERE nome LIKE "%' + nome + '%" OR indirizzo LIKE "%' + indirizzo + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefonoReferente = ? OR note  = ?',
+        [nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note], (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('Nothing found')
+            } else {
+                console.log(result)
+                res.status(200).send(result);
+            }
+        }
+    )
+}))
+
 module.exports = router;
