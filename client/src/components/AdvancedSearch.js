@@ -4,21 +4,21 @@ import { useNavigate } from 'react-router-dom';
 const AdvancedSearch = (props) => {
     const navigate = useNavigate();
 
-    const [nome, setNome] = useState();
-    const [indirizzo, setIndirizzo] = useState();
-    const [cap, setCap] = useState();
-    const [città, setCittà] = useState();
-    const [provincia, setProvincia] = useState();
-    const [regione, setRegione] = useState();
-    const [email, setEmail] = useState();
-    const [telefono, setTelefono] = useState();
-    const [telefonoReferente, setTelefonoReferente] = useState();
-    const [contattato, setContattato] = useState();
-    const [riContattato, setRiContattato] = useState();
-    const [compra, setCompra] = useState();
-    const [imbustato, setImbustato] = useState();
-    const [sfuso, setSfuso] = useState();
-    const [note, setNote] = useState();
+    const [nome, setNome] = useState(null);
+    const [indirizzo, setIndirizzo] = useState(null);
+    const [cap, setCap] = useState(null);
+    const [città, setCittà] = useState(null);
+    const [provincia, setProvincia] = useState(null);
+    const [regione, setRegione] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [telefono, setTelefono] = useState(null);
+    const [telefonoReferente, setTelefonoReferente] = useState(null);
+    const [contattato, setContattato] = useState(null);
+    const [riContattato, setRiContattato] = useState(null);
+    const [compra, setCompra] = useState(null);
+    const [imbustato, setImbustato] = useState(null);
+    const [sfuso, setSfuso] = useState(null);
+    const [note, setNote] = useState(null);
 
     const submit = (e) => {
         e.preventDefault();
@@ -26,16 +26,6 @@ const AdvancedSearch = (props) => {
             nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
         }
         props.context.actions.searchAdvanced(shop)
-            /* .then(res => {
-                if (res.status === 200) {
-                    props.context.actions.setShopsList(res)
-                    navigate("/search");
-                } else if (res === null) {
-                    navigate("/notfound")
-                } else {
-                    navigate("/error")
-                }
-            }) */
             .then(res => {
                 if (res === null) {
                     navigate("/notfound")

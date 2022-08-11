@@ -7,6 +7,7 @@ import Add from './components/Add';
 import Shop from './components/Shop';
 import ShopsList from './components/ShopsList'
 import AdvancedSearch from './components/AdvancedSearch';
+import UpdateShop from './components/UpdateShop';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
 
@@ -17,6 +18,7 @@ const AddWithContext = withContext(Add);
 const ShopWithContext = withContext(Shop);
 const ShopsListWithContext = withContext(ShopsList);
 const AdvancedSearchWithContext = withContext(AdvancedSearch);
+const UpdateShopWithContext = withContext(UpdateShop);
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/shop/:id" element={<ShopWithContext />} />
           <Route path="/search" element={<ShopsListWithContext />} />
           <Route path="/advsearch" element={<AdvancedSearchWithContext />} />
+          <Route path="/update/:id" element={<UpdateShopWithContext />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<NotFound />} />

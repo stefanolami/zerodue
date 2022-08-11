@@ -84,6 +84,15 @@ export default class Methods {
       }
     }
 
+    async deleteShop(id) {
+      const response = await this.api(`/shop/${id}`, 'DELETE');
+      if (response.status === 204) {
+        return true
+      } else {
+        throw new Error();
+      }
+    }
+
     /* async searchAdvanced(shop) {
       const response = await this.api(`/advsearch?nome=${shop.nome}&indirizzo=${shop.indirizzo}&cap=${shop.cap}&città=${shop.città}&provincia=${shop.provincia}&regione=${shop.regione}&telefono=${shop.telefono}&telefonoReferente=${shop.telefonoReferente}&email=${shop.email}&note=${shop.note}&compra=${shop.compra}&sfuso=${shop.sfuso}&imbustato=${shop.imbustato}&contattato=${shop.contattato}&riContattato=${shop.riContattato}`, 'GET');
       if (response.status === 200) {

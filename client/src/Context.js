@@ -33,6 +33,10 @@ export class Provider extends Component {
         return await this.apiMethods.searchAdvanced(shop);
     }
 
+    deleteShop = async (id) => {
+        return await this.apiMethods.deleteShop(id);
+    }
+
     setShopsList = (list) => {
         this.setState(() => {
             return {
@@ -51,7 +55,8 @@ export class Provider extends Component {
                 getShopsByPlace: this.getShopsByPlace,
                 setShopsList: this.setShopsList,
                 searchShops: this.searchShops,
-                searchAdvanced: this.searchAdvanced
+                searchAdvanced: this.searchAdvanced,
+                deleteShop: this.deleteShop
             }
         }
 
