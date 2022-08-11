@@ -72,7 +72,7 @@ export default class Methods {
     }
 
     async searchAdvanced(shop) {
-      const response = await this.api('/advsearch', 'GET', shop);
+      const response = await this.api('/advsearch', 'POST', shop);
       if (response.status === 200) {
         return response.json().then(data => data);
       }
@@ -83,6 +83,19 @@ export default class Methods {
         throw new Error();
       }
     }
+
+    /* async searchAdvanced(shop) {
+      const response = await this.api(`/advsearch?nome=${shop.nome}&indirizzo=${shop.indirizzo}&cap=${shop.cap}&città=${shop.città}&provincia=${shop.provincia}&regione=${shop.regione}&telefono=${shop.telefono}&telefonoReferente=${shop.telefonoReferente}&email=${shop.email}&note=${shop.note}&compra=${shop.compra}&sfuso=${shop.sfuso}&imbustato=${shop.imbustato}&contattato=${shop.contattato}&riContattato=${shop.riContattato}`, 'GET');
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      }
+      else if (response.status === 404) {
+        return null;
+      }
+      else {
+        throw new Error();
+      }
+    } */
   
     async getUser(username, password) {
       const response = await this.api(`/users`, 'GET', null, true, {username, password});

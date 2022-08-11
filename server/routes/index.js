@@ -110,14 +110,14 @@ router.get('/search/:query', asyncHandler( async (req, res) => {
     )
 }))
 
-router.get('/advsearch', asyncHandler( async (req, res) => {
+router.post('/advsearch', asyncHandler( async (req, res) => {
 
     /* let nome = req.body.nome;
     let indirizzo = req.body.indirizzo;
     let cap = req.body.cap; */
-    const {nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note} = req.body.shop
+    const {nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note} = req.body
 
-    console.log(req.body.shop)
+    console.log(nome)
 
     db.query(
         'SELECT * FROM shops WHERE nome LIKE "%' + nome + '%" OR indirizzo LIKE "%' + indirizzo + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefonoReferente = ? OR note  = ?',

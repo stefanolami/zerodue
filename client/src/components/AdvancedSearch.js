@@ -26,7 +26,25 @@ const AdvancedSearch = (props) => {
             nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
         }
         props.context.actions.searchAdvanced(shop)
-            .then(res => props.context.actions.setShopsList(res))
+            /* .then(res => {
+                if (res.status === 200) {
+                    props.context.actions.setShopsList(res)
+                    navigate("/search");
+                } else if (res === null) {
+                    navigate("/notfound")
+                } else {
+                    navigate("/error")
+                }
+            }) */
+            .then(res => {
+                if (res === null) {
+                    navigate("/notfound")
+                } else {
+                    props.context.actions.setShopsList(res)
+                    navigate("/search")
+                }
+
+            })
             .catch(err => console.log(err.message))
         console.log("searched")
     }

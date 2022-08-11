@@ -11,7 +11,7 @@ const Search = (props) => {
     const navigate = useNavigate()
 
     const searchShops = (e, query) => {
-        e.preventDefault()
+        e.preventDefault();
         props.context.actions.searchShops(query)
             .then(res => props.context.actions.setShopsList(res))
             .catch(err => console.log(err.message))
