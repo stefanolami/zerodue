@@ -93,6 +93,17 @@ export default class Methods {
       }
     }
 
+    async updateShop(id, shop) {
+      const response = await this.api(`/shop/${id}`, 'PUT', shop);
+      if (response.status === 201) {
+        return true
+    } else if (response.status === 400) {
+      return response
+    } else {
+        throw new Error();
+    }
+    }
+
     /* async searchAdvanced(shop) {
       const response = await this.api(`/advsearch?nome=${shop.nome}&indirizzo=${shop.indirizzo}&cap=${shop.cap}&città=${shop.città}&provincia=${shop.provincia}&regione=${shop.regione}&telefono=${shop.telefono}&telefonoReferente=${shop.telefonoReferente}&email=${shop.email}&note=${shop.note}&compra=${shop.compra}&sfuso=${shop.sfuso}&imbustato=${shop.imbustato}&contattato=${shop.contattato}&riContattato=${shop.riContattato}`, 'GET');
       if (response.status === 200) {

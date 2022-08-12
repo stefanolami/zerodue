@@ -215,6 +215,10 @@ header {
   font-size: 1rem;
 }
 
+.addForm input[type="radio"] {
+  margin: 8px;
+}
+
 textarea {
   max-width: 600px;
   width: 100%;
@@ -240,7 +244,7 @@ textarea {
 }
 
 .addBtn:hover,
-.addB                 tn:focus {
+.addBtn:focus {
   border: 2px solid black;
   border-radius: 4px;
   padding: 10px;

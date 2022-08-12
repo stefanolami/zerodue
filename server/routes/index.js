@@ -248,4 +248,32 @@ router.delete('/shop/:id', asyncHandler( async (req, res) => {
     )
 }))
 
+router.put('/shop/:id', asyncHandler( async (req, res) => {
+
+    const id = req.params.id;
+
+    const {
+        nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
+    } = req.body
+
+    db.query(
+        'UPDATE shops SET nome = ?, indirizzo = ?, cap = ?, città = ?, provincia = ?, regione = ?, email = ?, telefono = ?, telefonoReferente = ?, contattato = ?, riContattato = ?, compra = ?, imbustato = ?, sfuso = ?, note = ? WHERE id = ?',
+        [nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note, id], (err, result) => {
+            if (err) {
+                if (!req.body.nome) {
+                    console.log(err.sqlMessage)
+                    res.status(400).send(err.sqlMessage)
+                } else {
+                    console.log(err)
+                    res.status(500).send(err)
+                }
+            } else {
+                console.log('values inserted')
+                res.status(201).send('values inserted')
+            }
+        }
+    )
+
+}))
+
 module.exports = router;

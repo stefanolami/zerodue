@@ -37,6 +37,10 @@ export class Provider extends Component {
         return await this.apiMethods.deleteShop(id);
     }
 
+    updateShop = async (id, shop) => {
+        return await this.apiMethods.updateShop(id, shop);
+    }
+
     setShopsList = (list) => {
         this.setState(() => {
             return {
@@ -56,7 +60,8 @@ export class Provider extends Component {
                 setShopsList: this.setShopsList,
                 searchShops: this.searchShops,
                 searchAdvanced: this.searchAdvanced,
-                deleteShop: this.deleteShop
+                deleteShop: this.deleteShop,
+                updateShop: this.updateShop
             }
         }
 

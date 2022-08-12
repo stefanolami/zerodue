@@ -8,6 +8,7 @@ const Shop = (props) => {
     const navigate = useNavigate()
 
     const deleteShop = (id) => {
+        window.confirm("Sei sicuro di voler cancellare questo negozio?")
         props.context.actions.deleteShop(id)
             .then(res => {
                 if (res === true) {
@@ -96,16 +97,16 @@ const Shop = (props) => {
                                 }
                                 {
                                     shop.compra === 1 ? (
-                                        <p><strong>Compra:</strong> {
+                                        <p><strong>Compra</strong> {
                                             shop.imbustato === 1 ? (
-                                                "Imbustato "
+                                                <span>Imbustato </span>
                                             ) : (
                                                 <React.Fragment></React.Fragment>
                                             )
                                         }
                                         {
                                             shop.sfuso === 1 ? (
-                                                "Sfuso "
+                                                <span>Sfuso </span>
                                             ) : (
                                                 <React.Fragment></React.Fragment>
                                             )
@@ -117,12 +118,10 @@ const Shop = (props) => {
                             </div>
                         </div>
                         <div className="shopBtns">
-                                <Link to="/update">
-                                    <button className="updateBtn">Aggiorna</button>
-                                </Link>
-                                
-                                <button className="deleteBtn" onClick={() => deleteShop(id)}>Cancella</button>
-                                
+                            <Link to={`/update/${id}`}>
+                                <button className="updateBtn">Aggiorna</button>
+                            </Link>
+                            <button className="deleteBtn" onClick={() => deleteShop(id)}>Cancella</button>  
                         </div>
                     </React.Fragment>
                 ) : (

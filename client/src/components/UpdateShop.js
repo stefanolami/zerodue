@@ -30,7 +30,7 @@ const UpdateShop = (props) => {
             nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
         }
         if (nome) {
-            props.context.actions.createShop(shop)
+            props.context.actions.updateShop(id, shop)
             .then(res => {
                 if (res === true) {
                     navigate("/")
@@ -110,34 +110,41 @@ const UpdateShop = (props) => {
                         <label>
                             Compra 
                             <div>
-                                Si <input type="radio" value="1" checked={compra === 1 || "1" ? true : false} name="compra" onChange={(e) => setCompra(1)} />
-                                No <input type="radio" value="0" checked={compra === 0 || "0" ? true : false} name="compra" onChange={(e) => setCompra(0)} />
+                                Si <input type="radio" value="1" checked={compra === 1 ? true : false} name="compra" onChange={(e) => setCompra(1)} />
+                                No <input type="radio" value="0" checked={compra === 0 ? true : false} name="compra" onChange={(e) => setCompra(0)} />
                             </div>
                         </label>
                         <label>
-                            Come
+                            Buste
                             <div>
-                                Buste <input type="checkbox" value="1" name="compraCome" onChange={(e) => setImbustato(e.target.value)} />
-                                Sfuso <input type="checkbox" value="1" name="compraCome" onChange={(e) => setSfuso(e.target.value)} />
+                                Si <input type="radio" value="1" checked={imbustato === 1 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(1)} />
+                                No <input type="radio" value="0" checked={imbustato === 0 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(0)} />
+                            </div>
+                        </label>
+                        <label>
+                            Sfuso
+                            <div>
+                                Si <input type="radio" value="1" checked={sfuso === 1 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(1)} />
+                                No <input type="radio" value="0" checked={sfuso === 0 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(0)} />
                             </div>
                         </label>
                         <label>
                             Contattato
                             <div>
-                                Si <input type="radio" value="checked" name="contattato" onChange={(e) => setContattato(e.target.value)} />
-                                No <input type="radio" value="0" name="contattato" onChange={(e) => setContattato(e.target.value)} />
+                                Si <input type="radio" value="1" checked={contattato === 1 ? true : false} name="contattato" onChange={(e) => setContattato(1)} />
+                                No <input type="radio" value="0" checked={contattato === 0 ? true : false} name="contattato" onChange={(e) => setContattato(0)} />
                             </div>
                         </label>
                         <label>
                             RiContattato
                             <div>
-                                Si <input type="radio" value="1" name="riContattato" onChange={(e) => setRiContattato(e.target.value)} />
-                                No <input type="radio" value="0" name="riContattato" onChange={(e) => setRiContattato(e.target.value)} />
+                                Si <input type="radio" value="1" checked={riContattato === 1 ? true : false} name="riContattato" onChange={(e) => setRiContattato(1)} />
+                                No <input type="radio" value="0" checked={riContattato === 0 ? true : false} name="riContattato" onChange={(e) => setRiContattato(0)} />
                             </div>
                         </label>
                     </div>
                 </div>
-                <button className="updateBtn" type="submit">Aggiorna</button>
+                <button className="addBtn" type="submit">Aggiorna</button>
             </form>
         </div>
     )
