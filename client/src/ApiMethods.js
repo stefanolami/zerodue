@@ -14,7 +14,7 @@ export default class Methods {
       if (body !== null) {
         options.body = JSON.stringify(body);
       }
-  
+      console.log(url)
       return fetch(url, options);
     }
 
@@ -71,8 +71,21 @@ export default class Methods {
       }
     }
 
-    async searchAdvanced(shop) {
+    /* async searchAdvanced(shop) {
       const response = await this.api('/advsearch', 'POST', shop);
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      }
+      else if (response.status === 404) {
+        return null;
+      }
+      else {
+        throw new Error();
+      }
+    } */
+
+    async searchAdvanced(query) {
+      const response = await this.api(`/advsearch${query}`);
       if (response.status === 200) {
         return response.json().then(data => data);
       }

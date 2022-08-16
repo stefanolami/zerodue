@@ -110,30 +110,8 @@ router.get('/search/:query', asyncHandler( async (req, res) => {
     )
 }))
 
+
 /* router.post('/advsearch', asyncHandler( async (req, res) => {
-
-    
-    const {nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note} = req.body
-
-    console.log(req.body)
-
-    db.query(
-        'SELECT * FROM shops WHERE nome LIKE "%' + nome + '%" AND indirizzo LIKE "%' + indirizzo + '%" AND cap = ? AND città = ? AND provincia = ? AND regione = ? AND email = ? AND telefono = ? AND telefonoReferente = ? AND note  = ?',
-        [nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note], (err, result) => {
-            if (err) {
-                console.log(err.sqlMessage);
-                res.send(err);
-            } else if (result.length === 0) {
-                res.status(404).send('Nothing found')
-            } else {
-                console.log(result)
-                res.status(200).send(result);
-            }
-        }
-    )
-})) */
-
-router.post('/advsearch', asyncHandler( async (req, res) => {
 
     let dbQuery = 'SELECT * FROM shops WHERE 1=1';
     let inputs = [];
@@ -212,6 +190,94 @@ router.post('/advsearch', asyncHandler( async (req, res) => {
     if (note !== null) {
         dbQuery += ' AND note LIKE "%' + note + '%"';
         inputs.push(note);
+    }
+
+    console.log(inputs);
+    
+    console.log(dbQuery);
+
+    db.query(dbQuery, inputs, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('Nothing found')
+            } else {
+                console.log(result);
+                res.status(200).send(result);
+            }
+        }
+    )
+})) */
+
+router.get('/advsearch', asyncHandler( async (req, res) => {
+    let dbQuery = 'SELECT * FROM shops WHERE 1=1';
+    let inputs = [];
+
+    if (req.query.nome) {
+        dbQuery += ' AND nome LIKE "%' + req.query.nome + '%"';
+        inputs.push(req.query.nome);
+    }
+    if (req.query.indirizzo) {
+        dbQuery += ' AND indirizzo LIKE "%' + req.query.indirizzo + '%"';
+        inputs.push(req.query.indirizzo);
+    }
+    if (req.query.cap) {
+        dbQuery += ' AND cap = ?';
+        inputs.push(req.query.cap);
+    }
+    if (req.query.città) {
+        dbQuery += ' AND città = ?';
+        inputs.push(req.query.città);
+    }
+    if (req.query.provincia) {
+        dbQuery += ' AND provincia = ?';
+        inputs.push(req.query.provincia);
+    }
+    if (req.query.regione) {
+        dbQuery += ' AND regione = ?';
+        inputs.push(req.query.regione);
+    }
+    if (req.query.email) {
+        dbQuery += ' AND email = ?';
+        inputs.push(req.query.email);
+    }
+    if (req.query.telefono) {
+        dbQuery += ' AND telefono LIKE "%' + req.query.telefono + '%"';
+        inputs.push(req.query.telefono);
+    }
+    if (req.query.telefonoReferente) {
+        dbQuery += ' AND telefonoReferente LIKE "%' + req.query.telefonoReferente + '%"';
+        inputs.push(req.query.telefonoReferente);
+    }
+    if (req.query.contattato) {
+        contattato = parseInt(req.query.contattato);
+        dbQuery += ` AND contattato = ${contattato}`;
+        inputs.push(contattato);
+    }
+    if (req.query.riContattato) {
+        riContattato = parseInt(req.query.riContattato)
+        dbQuery += ` AND riContattato = ${riContattato}`;
+        inputs.push(riContattato);
+    }
+    if (req.query.compra) {
+        compra = parseInt(req.query.compra)
+        dbQuery += ` AND compra = ${compra}`;
+        inputs.push(compra);
+    }
+    if (req.query.imbustato) {
+        imbustato = parseInt(req.query.imbustato)
+        dbQuery += ` AND imbustato = ${imbustato}`;
+        inputs.push(imbustato);
+    }
+    if (req.query.sfuso) {
+        sfuso = parseInt(req.query.sfuso)
+        dbQuery += ` AND sfuso = ${sfuso}`;
+        inputs.push(sfuso);
+    }
+    if (req.query.note) {
+        dbQuery += ' AND note LIKE "%' + req.query.note + '%"';
+        inputs.push(req.query.note);
     }
 
     console.log(inputs);

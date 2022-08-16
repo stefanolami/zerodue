@@ -5,7 +5,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Add from './components/Add';
 import Shop from './components/Shop';
-import ShopsList from './components/ShopsList'
+import ShopsList from './components/ShopsList';
+import ShopsListAdv from './components/ShopsListAdv';
 import AdvancedSearch from './components/AdvancedSearch';
 import UpdateShop from './components/UpdateShop';
 import NotFound from './components/NotFound';
@@ -17,6 +18,7 @@ const HomeWithContext = withContext(Home);
 const AddWithContext = withContext(Add);
 const ShopWithContext = withContext(Shop);
 const ShopsListWithContext = withContext(ShopsList);
+const ShopsListAdvWithContext = withContext(ShopsListAdv);
 const AdvancedSearchWithContext = withContext(AdvancedSearch);
 const UpdateShopWithContext = withContext(UpdateShop);
 
@@ -30,7 +32,8 @@ function App() {
           <Route path="/add" element={<AddWithContext />} />
           <Route path="/shop/:id" element={<ShopWithContext />} />
           <Route path="/search" element={<ShopsListWithContext />} />
-          <Route path="/advsearch" element={<AdvancedSearchWithContext />} />
+          <Route path="/advsearchform" element={<AdvancedSearchWithContext />} />
+          <Route path="/advsearch" element={<ShopsListAdvWithContext />} />
           <Route path="/update/:id" element={<UpdateShopWithContext />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/error" element={<Error />} />

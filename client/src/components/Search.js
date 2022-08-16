@@ -15,15 +15,15 @@ const Search = (props) => {
         props.context.actions.searchShops(query)
             .then(res => props.context.actions.setShopsList(res))
             .catch(err => console.log(err.message))
-        console.log("searched")
-        navigate('/search')
+        console.log("searched");
+        navigate('/search');
     }
 
     return (
         <form className="searchDiv" onSubmit={(e) => searchShops(e, query)}>
             <input type="text" className="searchInput" placeholder="Search" onChange={(e) => setQuery(e.target.value)} />
             <button type="submit" className="searchBtn"><img src={searchIcon} alt="Search icon" className="searchIcon" /></button>
-            <Link to="/advsearch" className="filterLink"><img src={filterIcon} alt="Filter icon" className="filterIcon" /></Link>
+            <Link to="/advsearchform" className="filterLink"><img src={filterIcon} alt="Filter icon" className="filterIcon" /></Link>
         </form>
     )
 }

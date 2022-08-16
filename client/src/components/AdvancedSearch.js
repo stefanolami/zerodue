@@ -20,7 +20,7 @@ const AdvancedSearch = (props) => {
     const [sfuso, setSfuso] = useState(null);
     const [note, setNote] = useState(null);
 
-    const submit = (e) => {
+    /* const submit = (e) => {
         e.preventDefault();
         const shop = {
             nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
@@ -37,6 +37,62 @@ const AdvancedSearch = (props) => {
             })
             .catch(err => console.log(err.message))
         console.log("searched")
+    } */
+
+    const submit = (e) => {
+        e.preventDefault();
+        let query = `?1=1`;
+
+        if (nome) {
+            query += `&nome=${nome}`;
+        }
+        if (indirizzo) {
+            query += `&indirizzo=${indirizzo}`;
+        }
+        if (cap) {
+            query += `&cap=${cap}`;
+        }
+        if (città) {
+            query += `&città=${città}`;
+        }
+        if (provincia) {
+            query += `&provincia=${provincia}`;
+        }
+        if (regione) {
+            query += `&regione=${regione}`;
+        }
+        if (email) {
+            query += `&email=${email}`;
+        }
+        if (telefono) {
+            query += `&telefono=${telefono}`;
+        }
+        if (telefonoReferente) {
+            query += `&telefonoReferente=${telefonoReferente}`;
+        }
+        if (contattato) {
+            query += `&contattato=${contattato}`;
+        }
+        if (riContattato) {
+            query += `&riContattato=${riContattato}`;
+        }
+        if (compra) {
+            query += `&compra=${compra}`;
+        }
+        if (sfuso) {
+            query += `&sfuso=${sfuso}`;
+        }
+        if (imbustato) {
+            query += `&imbustato=${imbustato}`;
+        }
+        if (note) {
+            query += `&note=${note}`;
+        }
+
+        navigate({
+            pathname: '/advsearch',
+            search: `${query}`
+        })
     }
 
     return (
