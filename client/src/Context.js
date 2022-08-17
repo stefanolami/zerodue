@@ -9,6 +9,7 @@ export class Provider extends Component {
         super();
         this.apiMethods = new Methods();
         this.state = {
+            authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null,
             shopsList: []
         }
     }

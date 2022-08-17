@@ -11,6 +11,7 @@ import AdvancedSearch from './components/AdvancedSearch';
 import UpdateShop from './components/UpdateShop';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
+import PrivateRoute from './components/PrivateRoute';
 
 import withContext from './Context';
 
@@ -21,6 +22,7 @@ const ShopsListWithContext = withContext(ShopsList);
 const ShopsListAdvWithContext = withContext(ShopsListAdv);
 const AdvancedSearchWithContext = withContext(AdvancedSearch);
 const UpdateShopWithContext = withContext(UpdateShop);
+const PrivateRouteWithContext = withContext(PrivateRoute)
 
 function App() {
   return (

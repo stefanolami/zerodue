@@ -1,7 +1,10 @@
 const express = require('express');
 const db = require('../database').db;
 const router = express.Router();
-const {asyncHandler} = require('../middleware/async-handler')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const {asyncHandler} = require('../middleware/async-handler');
+const { authenticateUsers } = require('../middleware/auth-user');
 
 /* router.post('/create',async (req, res) => {
 
@@ -70,7 +73,7 @@ router.get('/shops/:place', asyncHandler(async (req, res) => {
     )
 }))
 
-router.get('/shop/:id', asyncHandler(async (req, res) => {
+router.get('/shop/:id', authenticateUsers, asyncHandler(async (req, res) => {
 
     const id = req.params.id;
 
@@ -340,6 +343,48 @@ router.put('/shop/:id', asyncHandler( async (req, res) => {
         }
     )
 
+}))
+
+router.post('/createuser', asyncHandler( async (req, res) => {
+    const {
+        username, password
+    } = req.body
+
+    const encryptedPassword = await bcrypt.hash(password, saltRounds);
+
+    db.query(
+        'INSERT INTO users (username, password) VALUES (?, ?)',
+        [username, encryptedPassword], (err, result) => {
+            if (err) {
+                if (!username && !password) {
+                    console.log(err.sqlMessage)
+                    res.status(400).send(err.sqlMessage)
+                } else {
+                    console.log(err)
+                    res.status(500).send(err)
+                }
+            } else {
+                console.log('values inserted')
+                res.status(201).send('values inserted')
+            }
+        }
+    )
+}))
+
+router.delete('/deleteuser/:id', asyncHandler( async (req, res) => {
+
+    const id = req.params.id;
+
+    db.query(
+        'DELETE FROM users WHERE id = ?', id, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else {
+                res.status(204).send('User Deleted')
+            }
+        }
+    )
 }))
 
 module.exports = router;

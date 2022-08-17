@@ -1,7 +1,8 @@
+import { Buffer } from 'buffer';
 
 export default class Methods {
 
-    api(path, method = 'GET', body = null) {
+    api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
       const url = 'http://localhost:5000/api' + path;
     
       const options = {
@@ -14,7 +15,12 @@ export default class Methods {
       if (body !== null) {
         options.body = JSON.stringify(body);
       }
-      console.log(url)
+      
+      if (requiresAuth) {
+        const encodedCredentials = Buffer.from(`${credentials.username}:${credentials.password}`).toString('base64'); 
+        options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+      }
+
       return fetch(url, options);
     }
 
