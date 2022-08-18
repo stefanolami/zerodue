@@ -387,4 +387,49 @@ router.delete('/deleteuser/:id', asyncHandler( async (req, res) => {
     )
 }))
 
+router.get('/user', asyncHandler( async (req, res) => {
+
+    const username = req.query.username;
+    const password = req.query.password;
+    const encryptedPassword = await bcrypt.hash(password, saltRounds);
+    
+    db.query(
+        'SELECT * FROM users WHERE username = ?', [username], (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('User not found')
+            } else {
+                const authenticated = bcrypt.compareSync(password, result[0].password);
+                if (authenticated) {
+                    res.status(200).send(result[0]);
+                } else {
+                    res.status(401).send('Access Denied');
+                }
+                
+            }
+        }
+    )
+
+}))
+
+/* router.get('/user', authenticateUsers, asyncHandler( async (req, res) => {
+
+    const username = req.query.username;
+    
+    db.query(
+        'SELECT * FROM users WHERE username = ?', username, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('User not found')
+            } else {
+                res.status(200).send(result); 
+            }
+        }
+    )
+})) */
+
 module.exports = router;

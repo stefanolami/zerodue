@@ -62,6 +62,10 @@ header {
   margin: 20px auto 30px;
 }
 
+.zeroDue {
+  margin: auto;
+}
+
 .subHeader {
   display: flex;
   width: 40%;
@@ -186,6 +190,41 @@ header {
   border: 2px solid black;
   border-radius: 4px;
   padding: 8px;
+}
+
+/* Sign In */
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 50px auto;
+}
+
+.signInForm input {
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 9px;
+  font-size: 1rem;
+}
+
+.signInForm button {
+  margin: 8px;
+  padding: 8px;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.signInForm button:hover,
+.signInForm button:focus {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 6px;
 }
 
 

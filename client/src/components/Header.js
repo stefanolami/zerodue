@@ -8,16 +8,29 @@ import withContext from '../Context';
 const SearchWithContext = withContext(Search);
 
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header>
-            <SearchWithContext />
-            <Link to="/">
+            {
+                props.context.authenticatedUser ? (
+                    <SearchWithContext />
+                ) : (
+                    <React.Fragment></React.Fragment>
+                )
+            }
+            <Link to="/" className="zeroDue">
                 <img className="logo" alt="Zerodue Logo" src={logo} />
             </Link>
-            <Link to="/add" className="addLink">
-                <button className="addLinkBtn">Aggiungi Negozio</button>
-            </Link>  
+            {
+                props.context.authenticatedUser ? (
+                    <Link to="/add" className="addLink">
+                        <button className="addLinkBtn">Aggiungi Negozio</button>
+                    </Link>
+                ) : (
+                    <React.Fragment></React.Fragment>
+                )
+            }
+              
         </header>
     )
 }
