@@ -9,15 +9,39 @@ export class Provider extends Component {
     constructor() {
         super();
         this.apiMethods = new Methods();
-        this.cookie = Cookies.get('authenticatedUser');
+        this.userCookie = Cookies.get('authenticatedUser');
+        this.lastAddedCookie = Cookies.get('lastAdded');
         this.state = {
-            authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null,
+            authenticatedUser: this.userCookie ? JSON.parse(this.userCookie) : null,
             shopsList: [],
+            lastAdded: this.lastAddedCookie ? JSON.parse(this.lastAddedCookie) : []
         }
     }
 
     createShop = async (shop) => {
-        return await this.apiMethods.createShop(shop);
+        const newShop = await this.apiMethods.createShop(shop);
+        console.log(newShop)
+        if (this.state.lastAdded.length > 5) {
+            let newArray = this.state.lastAdded;
+            newArray.shift();
+            newArray.push(shop);
+            this.setState(() => {
+                return {
+                    lastAdded: newArray
+                }
+            });
+            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 30});
+        } else {
+            let newArray = this.state.lastAdded;
+            newArray.push(shop);
+            this.setState(() => {
+                return {
+                    lastAdded: newArray
+                }
+            });
+            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 30});
+        }
+        return newShop;
     }
 
     getShop = async (id) => {
@@ -73,6 +97,7 @@ export class Provider extends Component {
         const value = {
             shopsList: this.state.shopsList,
             authenticatedUser: this.state.authenticatedUser,
+            lastAdded: this.state.lastAdded,
             actions: {
                 createShop: this.createShop,
                 getShop: this.getShop,

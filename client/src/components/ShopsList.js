@@ -28,8 +28,8 @@ const ShopsList = (props) => {
     return (
         <div className="shopsList">
             {
-                props.context.shopsList.length > 0 ? (
-                    props.context.shopsList.map((shop, index) => {
+                props.list.length > 0 ? (
+                    props.list.map((shop, index) => {
                         return (
                             <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>
                                 <div className="shopsListDiv">

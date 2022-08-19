@@ -192,6 +192,24 @@ header {
   padding: 8px;
 }
 
+/* Last Added */
+
+.lastAddedBtn {
+  padding: 12px 20px;;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+}
+
+.lastAddedBtn:focus,
+.lastAddedBtn:hover {
+  border: 2px solid black;
+  padding: 10px 18px;
+}
+
 /* Sign In */
 
 .signInForm {

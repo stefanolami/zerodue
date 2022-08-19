@@ -27,7 +27,7 @@ export default class Methods {
     async createShop(shop) {
         const response = await this.api('/create', 'POST', shop);
         if (response.status === 201) {
-            return true
+            return response;
         } else if (response.status === 400) {
           return response
             /* return response.json().then(data => {

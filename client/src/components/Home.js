@@ -2,10 +2,12 @@ import React, {useState, useEffect} from "react";
 import italia from '../geography';
 
 import ShopsList from './ShopsList';
+import LastAddedShop from "./LastAddedShops";
+
 
 import withContext from '../Context';
 
-const ShopsListWithContext = withContext(ShopsList)
+const LastAddedShopWithContext = withContext(LastAddedShop);
 
 const Home = (props) => {
     // eslint-disable-next-line
@@ -50,7 +52,8 @@ const Home = (props) => {
                     )
                 }
             </div>
-            <ShopsListWithContext />
+            <ShopsList list={props.context.shopsList} />
+            <LastAddedShopWithContext />
         </div>
     );
 };

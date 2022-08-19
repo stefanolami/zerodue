@@ -30,7 +30,7 @@ const Add = (props) => {
         if (nome) {
             props.context.actions.createShop(shop)
             .then(res => {
-                if (res === true) {
+                if (res) {
                     navigate("/")
                 } else if (res.status === 400) {
                     setErrors("Inserisci un nome");

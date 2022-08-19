@@ -51,7 +51,8 @@ router.post('/create',asyncHandler(async (req, res) => {
                 }
             } else {
                 console.log('values inserted')
-                res.status(201).send('values inserted')
+                console.log(result)
+                res.status(201).send(result)
             }
         }
     )
