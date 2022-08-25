@@ -16,7 +16,7 @@ const Search = (props) => {
             .then(res => props.context.actions.setShopsList(res))
             .catch(err => console.log(err.message))
         console.log("searched");
-        navigate('/search');
+        navigate(`/search/${query}`);
     }
 
     return (

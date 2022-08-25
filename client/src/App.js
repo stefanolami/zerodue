@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Add from './components/Add';
+import AddNew from './components/AddNew';
 import Shop from './components/Shop';
 import ShopsList from './components/ShopsList';
 import ShopsListAdv from './components/ShopsListAdv';
@@ -19,6 +20,7 @@ import withContext from './Context';
 const HeaderWithContext = withContext(Header);
 const HomeWithContext = withContext(Home);
 const AddWithContext = withContext(Add);
+const AddNewWithContext = withContext(AddNew);
 const ShopWithContext = withContext(Shop);
 const ShopsListWithContext = withContext(ShopsList);
 const ShopsListAdvWithContext = withContext(ShopsListAdv);
@@ -35,9 +37,9 @@ function App() {
         <Routes>
           <Route element={<PrivateRouteWithContext />}>
             <Route path="/" element={<HomeWithContext />} />
-            <Route path="/add" element={<AddWithContext />} />
+            <Route path="/add" element={<AddNewWithContext />} />
             <Route path="/shop/:id" element={<ShopWithContext />} />
-            <Route path="/search" element={<ShopsListWithContext />} />
+            <Route path="/search/:query" element={<ShopsListWithContext listName={"shopsList"} />} />
             <Route path="/advsearchform" element={<AdvancedSearchWithContext />} />
             <Route path="/advsearch" element={<ShopsListAdvWithContext />} />
             <Route path="/update/:id" element={<UpdateShopWithContext />} />

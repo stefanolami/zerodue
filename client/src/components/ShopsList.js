@@ -1,7 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const ShopsList = (props) => {
+
+    const query = useParams()
+
+    const [list, setList] = useState()
 
     const checkString = (string) => {
         if (string) {
@@ -25,11 +29,44 @@ const ShopsList = (props) => {
         } 
     }
 
+    /* useEffect(() => {
+        if (props.listName === "shopsList") {
+            console.log("setting list to shops")
+            
+            setList(props.context.shopsList)
+            
+            
+            console.log(list)
+            console.log(props.context.shopsList)
+        } else if (props.listName === "lastAdded") {
+            setList(props.context.lastAdded);
+        }
+        // eslint-disable-next-line
+    }, [list]) */
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (props.listName === "shopsList") {
+                console.log("setting list to shops")
+                setList(props.context.shopsList)
+                
+                
+                console.log(list)
+                console.log(props.context.shopsList)
+            } else if (props.listName === "lastAdded") {
+                setList(props.context.lastAdded);
+            }
+        }, 100)
+        
+        // eslint-disable-next-line
+    }, [query, list])
+
     return (
         <div className="shopsList">
             {
-                props.list.length > 0 ? (
-                    props.list.map((shop, index) => {
+                list ? (
+                    list.length > 0 ? (
+                    list.map((shop, index) => {
                         return (
                             <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>
                                 <div className="shopsListDiv">
@@ -45,6 +82,11 @@ const ShopsList = (props) => {
                 ) : (
                     <React.Fragment></React.Fragment>
                 )
+                ) : (
+                    <React.Fragment></React.Fragment>
+
+                )
+                
             }
         </div>
     )

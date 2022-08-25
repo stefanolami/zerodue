@@ -74,7 +74,7 @@ router.get('/shops/:place', asyncHandler(async (req, res) => {
     )
 }))
 
-router.get('/shop/:id', authenticateUsers, asyncHandler(async (req, res) => {
+router.get('/shop/:id', asyncHandler(async (req, res) => {
 
     const id = req.params.id;
 

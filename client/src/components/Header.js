@@ -11,26 +11,28 @@ const SearchWithContext = withContext(Search);
 const Header = (props) => {
     return (
         <header>
-            {
-                props.context.authenticatedUser ? (
-                    <SearchWithContext />
-                ) : (
-                    <React.Fragment></React.Fragment>
-                )
-            }
-            <Link to="/" className="zeroDue">
-                <img className="logo" alt="Zerodue Logo" src={logo} />
-            </Link>
-            {
-                props.context.authenticatedUser ? (
-                    <Link to="/add" className="addLink">
-                        <button className="addLinkBtn">Aggiungi Negozio</button>
-                    </Link>
-                ) : (
-                    <React.Fragment></React.Fragment>
-                )
-            }
-              
+            <div className="logoDiv">
+                <Link to="/" className="zeroDue">
+                    <img className="logo" alt="Zerodue Logo" src={logo} />
+                </Link>
+            </div>
+                {
+                    props.context.authenticatedUser ? (
+                        <div className="headerDiv">
+                            <SearchWithContext />
+                            <div className="headerBtnsDiv">
+                                <Link to="/add" className="addLink">
+                                    <button className="addLinkBtn">Aggiungi Negozio</button>
+                                </Link>
+                                <Link to="/last-added" className="lastAddedLink">
+                                    <button className="lastAddedBtn">Ultimi Aggiunti</button>
+                                </Link>
+                            </div>
+                        </div>
+                    ) : (
+                        <React.Fragment></React.Fragment>
+                    )
+                }       
         </header>
     )
 }
