@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
-import filterIcon from '../images/filter-icon.png';
+import Navigation from './Navigation';
+
 import searchIcon from "../images/search-icon.png";
 
 const Search = (props) => {
@@ -20,11 +21,14 @@ const Search = (props) => {
     }
 
     return (
-        <form className="searchDiv" onSubmit={(e) => searchShops(e, query)}>
-            <input type="text" className="searchInput" placeholder="Search" onChange={(e) => setQuery(e.target.value)} />
-            <button type="submit" className="searchBtn"><img src={searchIcon} alt="Search icon" className="searchIcon" /></button>
-            <Link to="/advsearchform" className="filterLink"><img src={filterIcon} alt="Filter icon" className="filterIcon" /></Link>
-        </form>
+        <React.Fragment>
+            <Navigation />
+            <form className="search-div" onSubmit={(e) => searchShops(e, query)}>
+                <input type="text" className="search-input" placeholder="Search" onChange={(e) => setQuery(e.target.value)} />
+                <button type="submit" className="search-btn"><img src={searchIcon} alt="Search icon" className="searchIcon" /></button>
+            </form>
+        </React.Fragment>
+        
     )
 }
 

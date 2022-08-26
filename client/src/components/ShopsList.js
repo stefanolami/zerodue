@@ -29,7 +29,7 @@ const ShopsList = (props) => {
         } 
     }
 
-    /* useEffect(() => {
+    useEffect(() => {
         if (props.listName === "shopsList") {
             console.log("setting list to shops")
             
@@ -42,9 +42,9 @@ const ShopsList = (props) => {
             setList(props.context.lastAdded);
         }
         // eslint-disable-next-line
-    }, [list]) */
+    }, [list])
 
-    useEffect(() => {
+    /* useEffect(() => {
         setTimeout(() => {
             if (props.listName === "shopsList") {
                 console.log("setting list to shops")
@@ -59,7 +59,7 @@ const ShopsList = (props) => {
         }, 100)
         
         // eslint-disable-next-line
-    }, [query, list])
+    }, [query, list]) */
 
     return (
         <div className="shopsList">

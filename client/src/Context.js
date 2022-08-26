@@ -30,7 +30,7 @@ export class Provider extends Component {
                     lastAdded: newArray
                 }
             });
-            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 30});
+            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 360});
         } else {
             let newArray = this.state.lastAdded;
             newArray.push(shop);
@@ -39,7 +39,7 @@ export class Provider extends Component {
                     lastAdded: newArray
                 }
             });
-            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 30});
+            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 360});
         }
         return newShop;
     }
@@ -77,7 +77,7 @@ export class Provider extends Component {
                     authenticatedUser: user,
                 };
             });
-            Cookies.set('authenticatedUser', JSON.stringify(user), {expires: 1});
+            Cookies.set('authenticatedUser', JSON.stringify(user), {expires: 30});
         } else {
             console.log('Username not found')
         }

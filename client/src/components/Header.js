@@ -19,15 +19,7 @@ const Header = (props) => {
                 {
                     props.context.authenticatedUser ? (
                         <div className="headerDiv">
-                            <SearchWithContext />
-                            <div className="headerBtnsDiv">
-                                <Link to="/add" className="addLink">
-                                    <button className="addLinkBtn">Aggiungi Negozio</button>
-                                </Link>
-                                <Link to="/last-added" className="lastAddedLink">
-                                    <button className="lastAddedBtn">Ultimi Aggiunti</button>
-                                </Link>
-                            </div>
+                            <p>Ciao {props.context.authenticatedUser.username}!</p>
                         </div>
                     ) : (
                         <React.Fragment></React.Fragment>
