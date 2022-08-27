@@ -13,7 +13,7 @@ export class Provider extends Component {
         this.lastAddedCookie = Cookies.get('lastAdded');
         this.state = {
             authenticatedUser: this.userCookie ? JSON.parse(this.userCookie) : null,
-            shopsList: [],
+            shopsListByPlace: null,
             lastAdded: this.lastAddedCookie ? JSON.parse(this.lastAddedCookie) : []
         }
     }
@@ -84,10 +84,10 @@ export class Provider extends Component {
         return user;
     }
 
-    setShopsList = (list) => {
+    setShopsListByPlace = (list) => {
         this.setState(() => {
             return {
-                shopsList: list
+                shopsListByPlace: list
             }
         })
     }
@@ -95,14 +95,14 @@ export class Provider extends Component {
     render() {
 
         const value = {
-            shopsList: this.state.shopsList,
+            shopsListByPlace: this.state.shopsListByPlace,
             authenticatedUser: this.state.authenticatedUser,
             lastAdded: this.state.lastAdded,
             actions: {
                 createShop: this.createShop,
                 getShop: this.getShop,
                 getShopsByPlace: this.getShopsByPlace,
-                setShopsList: this.setShopsList,
+                setShopsListByPlace: this.setShopsListByPlace,
                 searchShops: this.searchShops,
                 searchAdvanced: this.searchAdvanced,
                 deleteShop: this.deleteShop,

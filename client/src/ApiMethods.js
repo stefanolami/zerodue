@@ -65,7 +65,7 @@ export default class Methods {
     }
 
     async searchShops(query) {
-      const response = await this.api(`/search/${query}`, 'GET');
+      const response = await this.api(`/search${query}`, 'GET');
       if (response.status === 200) {
         return response.json().then(data => data);
       }

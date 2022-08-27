@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Search from './components/Search';
+import SearchByPlace from './components/SearchByPlace'
 import Add from './components/Add';
 import AddNew from './components/AddNew';
 import Shop from './components/Shop';
@@ -21,6 +22,7 @@ import withContext from './Context';
 const HeaderWithContext = withContext(Header);
 const HomeWithContext = withContext(Home);
 const SearchWithContext = withContext(Search);
+const SearchByPlaceWithContext = withContext(SearchByPlace)
 const AddWithContext = withContext(Add);
 const AddNewWithContext = withContext(AddNew);
 const ShopWithContext = withContext(Shop);
@@ -42,6 +44,7 @@ function App() {
             <Route path="/add" element={<AddNewWithContext />} />
             <Route path="/shop/:id" element={<ShopWithContext />} />
             <Route path="/search" element={<SearchWithContext />} />
+            <Route path="/search-by-place" element={<SearchByPlaceWithContext />} />
             <Route path="/advanced-search" element={<AdvancedSearchWithContext />} />
             <Route path="/advsearch" element={<ShopsListAdvWithContext />} />
             <Route path="/update/:id" element={<UpdateShopWithContext />} />

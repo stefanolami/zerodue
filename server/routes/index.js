@@ -94,9 +94,9 @@ router.get('/shop/:id', asyncHandler(async (req, res) => {
 }))
 
 
-router.get('/search/:query', asyncHandler( async (req, res) => {
+router.get('/search', asyncHandler( async (req, res) => {
 
-    const query = req.params.query;
+    const query = req.query.query;
 
     db.query(
         'SELECT * FROM shops WHERE nome LIKE "%' + query + '%" OR indirizzo LIKE "%' + query + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefonoReferente = ? OR note  = ?',
