@@ -3,14 +3,15 @@ import WithClickOutside from './WithClickOutside';
 
 const SelectComponent = React.forwardRef( ({
     options,
-    placeholder = "",
     onChange,
     selectedKey,
     open,
-    setOpen
+    setOpen,
+    value,
+    label,
 }, ref) => {
 
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState();
 
     /* useEffect = (() => {
         if (selectedKey) {
@@ -39,19 +40,21 @@ const SelectComponent = React.forwardRef( ({
         console.log(Array.isArray(options))
     }
 
-    
+
 
     return (
         <React.Fragment>
             { options ? (
                 <div className="dropdown-div" ref={ref}>
                     <div className="input-div" onClick={onInputClick}>
-                        <input
-                            type="text"
-                            value={inputValue}
-                            placeholder={placeholder}
-                            onChange={onInputChange}
-                        />
+                        <label>&nbsp;{label}
+                            <input
+                                type="text"
+                                value={value}
+                                onChange={onInputChange}
+                            />
+                        </label>
+                        
                         <div className="input-arrow-div">
                             <i className="input-arrow" />
                         </div>
@@ -59,7 +62,7 @@ const SelectComponent = React.forwardRef( ({
                             x
                         </div> : null}
                     </div>
-                    <div className={`dropdown ${open ? "visible" : ""}`}>
+                    <div className={`dropdown ${open ? "visible" : ""}`} id="dropdown" >
                         {
                             Array.isArray(options) ? (
                                 options.map((opt, index) => {

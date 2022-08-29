@@ -9,9 +9,12 @@ export default function WithClickOutside (WrappedComponent) {
 
         useEffect(() => {
             const handleClickOutside = (e) => {
-                if (!ref.current.contains(e.target)) {
-                    setOpen(false);
+                if (ref.current) {
+                    if (!ref.current.contains(e.target)) {
+                        setOpen(false);
+                    }
                 }
+                
             }
             document.addEventListener("mousedown", handleClickOutside);
         }, [ref]);
