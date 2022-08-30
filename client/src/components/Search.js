@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Navigation from './Navigation';
 import ShopsList from './ShopsList';
@@ -56,9 +56,7 @@ const Search = (props) => {
                 </form>
                 <ShopsList list={shopsList} />
             </div>
-            
         </React.Fragment>
-        
     )
 }
 

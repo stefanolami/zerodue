@@ -10,6 +10,7 @@ const Form = (props) => {
 
     const navigate= useNavigate();
 
+    const [dataContatto, setDataContatto] = useState()
     const [nome, setNome] = useState();
     const [indirizzo, setIndirizzo] = useState();
     const [cap, setCap] = useState();
@@ -27,7 +28,6 @@ const Form = (props) => {
     const [imbustato, setImbustato] = useState();
     const [sfuso, setSfuso] = useState();
     const [note, setNote] = useState();
-    const [errors, setErrors] = useState();
 
     const [selectedOption, setSelectedOptions] = useState("");
 
@@ -138,45 +138,64 @@ const Form = (props) => {
                             <input type="text" value={nomeReferente || ""} id="nomeReferente" onChange={(e) => setNomeReferente(e.target.value)} />
                         </label>
                         <div className="form-business-div">
-                        <label>
+                            <label>
                                 Cliente 
                                 <div>
-                                    Si <input type="radio" value="1" checked={cliente === 1 ? true : false} name="cliente" onChange={(e) => setCliente(1)} />
-                                    No <input type="radio" value="0" checked={cliente === 0 ? true : false} name="cliente" onChange={(e) => setCliente(0)} />
+                                    <input className="radio-si" type="radio" value="1" checked={cliente === 1 ? true : false} name="cliente" onChange={(e) => setCliente(1)} />
+                                    <span className="radio-span si">Si</span>
+                                    <input className="radio-no" type="radio" value="0" checked={cliente === 0 ? true : false} name="cliente" onChange={(e) => setCliente(0)} />
+                                    <span className="radio-span no">No</span>
                                 </div>
                             </label>
                             <label>
                                 Compra 
                                 <div>
-                                    Si <input type="radio" value="1" checked={compra === 1 ? true : false} name="compra" onChange={(e) => setCompra(1)} />
-                                    No <input type="radio" value="0" checked={compra === 0 ? true : false} name="compra" onChange={(e) => setCompra(0)} />
+                                    <input className="radio-si" type="radio" value="1" checked={compra === 1 ? true : false} name="compra" onChange={(e) => setCompra(1)} />
+                                    <span className="radio-span si">Si</span>
+                                    <input className="radio-no" type="radio" value="0" checked={compra === 0 ? true : false} name="compra" onChange={(e) => setCompra(0)} />
+                                    <span className="radio-span no">No</span>
                                 </div>
                             </label>
                             <label>
                                 Buste
                                 <div>
-                                    Si <input type="radio" value="1" checked={imbustato === 1 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(1)} />
-                                    No <input type="radio" value="0" checked={imbustato === 0 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(0)} />
+                                    <input className="radio-si" type="radio" value="1" checked={imbustato === 1 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(1)} />
+                                    <span className="radio-span si">Si</span>
+                                    <input className="radio-no" type="radio" value="0" checked={imbustato === 0 ? true : false} name="compraImbustato" onChange={(e) => setImbustato(0)} />
+                                    <span className="radio-span no">No</span>
                                 </div>
                             </label>
                             <label>
                                 Sfuso
                                 <div>
-                                    Si <input type="radio" value="1" checked={sfuso === 1 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(1)} />
-                                    No <input type="radio" value="0" checked={sfuso === 0 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(0)} />
+                                    <input className="radio-si" type="radio" value="1" checked={sfuso === 1 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(1)} />
+                                    <span className="radio-span si">Si</span>
+                                    <input className="radio-no" type="radio" value="0" checked={sfuso === 0 ? true : false} name="compraSfuso" onChange={(e) => setSfuso(0)} />
+                                    <span className="radio-span no">No</span>
                                 </div>
                             </label>
                             <label>
                                 Contattato
                                 <div>
-                                    Si <input type="radio" value="1" checked={contattato === 1 ? true : false} name="contattato" onChange={(e) => setContattato(1)} />
-                                    No <input type="radio" value="0" checked={contattato === 0 ? true : false} name="contattato" onChange={(e) => setContattato(0)} />
+                                    <input className="radio-si" type="radio" value="1" checked={contattato === 1 ? true : false} name="contattato" onChange={(e) => setContattato(1)} />
+                                    <span className="radio-span si">Si</span>
+                                    <input className="radio-no" type="radio" value="0" checked={contattato === 0 ? true : false} name="contattato" onChange={(e) => setContattato(0)} />
+                                    <span className="radio-span no">No</span>
                                 </div>
                             </label>
-                            <label>Ultimo Contatto
-                                <input type="date" />
-                            </label>
+                            
                         </div>
+                        {
+                                contattato === 1 ? (
+                                    <div className="datepicker-div">
+                                        <label>Ultimo Contatto
+                                            <input type="date" value={dataContatto || null} onChange={(e) => setDataContatto(e.target.value)} />
+                                        </label>
+                                    </div>
+                                ) : (
+                                    null
+                                )
+                            }
                     </div>
                 </div>
                 <button className="addBtn" type="submit">{props.button}</button>

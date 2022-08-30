@@ -39,7 +39,7 @@ const Navigation = () => {
                         <img src={lastAddedIcon} alt="last added icon" />
                     </div>
                 </NavLink>
-                <NavLink to="/add">
+                <NavLink to="/add-shop">
                     <div>
                         <img src={plusIcon} alt="plus icon" id="plus-icon-navigation" />
                     </div>

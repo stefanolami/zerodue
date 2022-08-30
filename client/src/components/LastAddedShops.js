@@ -1,26 +1,20 @@
 import React, { useState } from 'react';
 
 import ShopsList from './ShopsList';
+import Navigation from './Navigation';
 
 
-const LastAddedShop = (props) => {
+const LastAddedShops = (props) => {
 
     const [show, setShow] = useState(false)
 
     return (
-        <div className="lastAddedDiv">
-            <button className="lastAddedBtn" onClick={() => show ? setShow(false) : setShow(true)}>Ultimi Aggiunti</button>
-            {
-                show ? (
-                    <ShopsList list={props.context.lastAdded} />
-                ) : (
-                    <React.Fragment>
-
-                    </React.Fragment>
-                )
-            }
-        </div>
+        <React.Fragment>
+            <Navigation />
+            <h2 className="last-added-title">Ultimi Aggiunti</h2>
+            <ShopsList list={props.context.lastAdded} />
+        </React.Fragment>
     )
 }
 
-export default LastAddedShop;
+export default LastAddedShops;

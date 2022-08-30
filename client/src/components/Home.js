@@ -43,7 +43,7 @@ const Home = (props) => {
                     <h4>ULTIMI<br></br> AGGIUNTI</h4>
                 </div>
             </Link>
-            <Link to="/add">
+            <Link to="/add-shop">
                 <div>
                     <img src={plusIcon} alt="plus icon" id="plus-icon-home" />
                     <h4>AGGIUNGI<br></br> NEGOZIO</h4>
