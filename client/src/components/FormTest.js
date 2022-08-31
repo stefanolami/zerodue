@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import italia from '../geography';
+import {parseISO} from 'date-fns';
 
 import SelectComponent from "./SelectComponent";
 
 
-const Form = (props) => {
+const FormTest = (props) => {
 
     const navigate= useNavigate();
 
@@ -38,23 +40,11 @@ const Form = (props) => {
         props.submit(e, shop);
     }
 
-    const fixDate = (date) => {
-        let subDate = date.substring(0, 10);
-        let lastDayString = subDate.slice(9);
-        let lastDayInt = parseInt(lastDayString);
-        lastDayInt += 1;
-        let newDayString = lastDayInt.toString();
-        let newSubDate = subDate.substring(0, 9);
-        let newDate = newSubDate.concat('', newDayString);
-        return newDate;
-    }
-
     useEffect(() => {
         if (props.update) {
             props.getShop(props.id)
             .then(res => {
                 if (res !== null) {
-                    console.log(res[0].ultimo_contatto.substring(0, 10))
                     console.log(res[0])
                     setNome(res[0].nome);
                     setIndirizzo(res[0].indirizzo);
@@ -67,7 +57,7 @@ const Form = (props) => {
                     setTelefonoReferente(res[0].telefono_referente);
                     setNomeReferente(res[0].nome_referente);
                     setContattato(res[0].contattato);
-                    setUltimoContatto(fixDate(res[0].ultimo_contatto));
+                    setUltimoContatto(res[0].ultimo_contatto);
                     setCompra(res[0].compra);
                     setCliente(res[0].cliente)
                     setSfuso(res[0].sfuso);
@@ -199,7 +189,15 @@ const Form = (props) => {
                                 contattato === 1 ? (
                                     <div className="datepicker-div">
                                         <label>Ultimo Contatto
-                                            <input type="date" value={ultimoContatto || ""} onChange={(e) => setUltimoContatto(e.target.value)} />
+                                        <DatePicker
+                                            dateFormat="dd/MM/yyyy"
+                                            className="form-control"
+                                            selected={ultimoContatto || parseISO("")}
+                                            onChange={date => {
+                                                setUltimoContatto(date);
+                                                alert(date);
+                                            }}
+                                        />
                                         </label>
                                     </div>
                                 ) : (
@@ -214,4 +212,4 @@ const Form = (props) => {
     )
 }
 
-export default Form;
+export default FormTest;

@@ -35,7 +35,7 @@ const SignIn = (props) => {
                 )
             }
             <div className="signInDiv">
-                <form className="signInForm" onSubmit={(e) => submit(e)}>
+                <form className="sign-in-form" onSubmit={(e) => submit(e)}>
                     <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                     <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <button type="submit">Sign In</button>

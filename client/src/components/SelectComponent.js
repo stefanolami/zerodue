@@ -4,7 +4,6 @@ import WithClickOutside from './WithClickOutside';
 const SelectComponent = React.forwardRef( ({
     options,
     onChange,
-    selectedKey,
     open,
     setOpen,
     value,
@@ -58,7 +57,7 @@ const SelectComponent = React.forwardRef( ({
                         <div className="input-arrow-div">
                             <i className="input-arrow" />
                         </div>
-                        {selectedKey || inputValue ? <div onClick={clearDropdown} className="input-clear-div">
+                        {inputValue ? <div onClick={clearDropdown} className="input-clear-div">
                             x
                         </div> : null}
                     </div>

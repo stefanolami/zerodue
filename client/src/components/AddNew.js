@@ -122,7 +122,7 @@ const AddNew = (props) => {
                         </label>
                     </div>
                 </div>
-                <button className="addBtn" type="submit">Aggiungi</button>
+                <button className="add-btn" type="submit">Aggiungi</button>
             </form>
         </div>
     )

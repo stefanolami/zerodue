@@ -30,8 +30,8 @@ const AddShop = (props) => {
         }
     }
 
-    const [selectedOption, setSelectedOptions] = useState("");
-    
+/*     const [selectedOption, setSelectedOptions] = useState("");
+ */    
 
     return (
         <React.Fragment>
@@ -44,8 +44,6 @@ const AddShop = (props) => {
                 update={false}
             />
         </React.Fragment>
-        
-
     )
 }
 

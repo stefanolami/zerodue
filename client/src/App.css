@@ -262,14 +262,14 @@ header p {
 
 /* Sign In */
 
-.signInForm {
+.sign-in-form {
   display: flex;
   flex-direction: column;
   width: 20%;
   margin: 50px auto;
 }
 
-.signInForm input {
+.sign-in-form input {
   border: 2px solid black;
   border-radius: 4px;
   margin: 8px;
@@ -277,7 +277,7 @@ header p {
   font-size: 1rem;
 }
 
-.signInForm button {
+.sign-in-form button {
   margin: 8px;
   padding: 8px;
   font-size: 1.1rem;
@@ -288,8 +288,8 @@ header p {
   cursor: pointer;
 }
 
-.signInForm button:hover,
-.signInForm button:focus {
+.sign-in-form button:hover,
+.sign-in-form button:focus {
   border: 2px solid black;
   border-radius: 4px;
   padding: 6px;
@@ -454,7 +454,7 @@ input[type="date"] {
   padding: 8px;
 }
 
-.addBtn {
+.add-btn {
   width: 40%;
   margin: 30px auto 50px;
   padding: 12px;
@@ -466,8 +466,8 @@ input[type="date"] {
   cursor: pointer;
 }
 
-.addBtn:hover,
-.addBtn:focus {
+.add-btn:hover,
+.add-btn:focus {
   border: 2px solid black;
   border-radius: 4px;
   padding: 10px;
@@ -595,25 +595,35 @@ input[type="date"] {
 
 /* Shop */
 
-.shopDiv {
+.shop {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 70px auto;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.shop-div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 50%;
-  margin: 50px auto;
-  font-size: 1.2rem;
 }
 
-.shopInfo {
+.shop-info {
   text-align: left;
-  width: 70%;
+  width: 50%;
 }
 
-.shopBusiness {
-  margin-top: 20px;
+.shop-business {
+  width: 50%;
 }
 
-.shopBtns {
+.shop h3 {
+  margin-bottom: 30px;
+}
+
+
+.shop-btns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -622,7 +632,7 @@ input[type="date"] {
 }
 
 .updateBtn,
-.deleteBtn {
+.delete-btn {
   padding: 15px 25px;
   font-size: 1.1rem;
   background-color: var(--color-green);
@@ -633,9 +643,13 @@ input[type="date"] {
 }
 
 .updateBtn:hover,
-.deleteBtn:hover {
+.delete-btn:hover {
   border: 2px solid black;
   padding: 13px 23px;
+}
+
+.undefined-span {
+  font-size: 1.5rem;
 }
 
 

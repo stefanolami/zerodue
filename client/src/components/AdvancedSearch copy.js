@@ -149,7 +149,7 @@ const AdvancedSearch = (props) => {
                             </label>
                         </div>
                     </div>
-                    <button className="addBtn" type="submit">Cerca</button>
+                    <button className="add-btn" type="submit">Cerca</button>
                 </form>
             </div>
         </React.Fragment>

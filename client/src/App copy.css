@@ -231,14 +231,14 @@ header {
 
 /* Sign In */
 
-.signInForm {
+.sign-in-form {
   display: flex;
   flex-direction: column;
   width: 20%;
   margin: 50px auto;
 }
 
-.signInForm input {
+.sign-in-form input {
   border: 2px solid black;
   border-radius: 4px;
   margin: 8px;
@@ -246,7 +246,7 @@ header {
   font-size: 1rem;
 }
 
-.signInForm button {
+.sign-in-form button {
   margin: 8px;
   padding: 8px;
   font-size: 1.1rem;
@@ -257,8 +257,8 @@ header {
   cursor: pointer;
 }
 
-.signInForm button:hover,
-.signInForm button:focus {
+.sign-in-form button:hover,
+.sign-in-form button:focus {
   border: 2px solid black;
   border-radius: 4px;
   padding: 6px;
@@ -307,7 +307,7 @@ textarea {
   resize: none;
 }
 
-.addBtn {
+.add-btn {
   width: 40%;
   margin: 30px auto 50px;
   padding: 12px;
@@ -319,8 +319,8 @@ textarea {
   cursor: pointer;
 }
 
-.addBtn:hover,
-.addBtn:focus {
+.add-btn:hover,
+.add-btn:focus {
   border: 2px solid black;
   border-radius: 4px;
   padding: 10px;
@@ -431,7 +431,7 @@ textarea {
 
 /* Shop */
 
-.shopDiv {
+.shop {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -440,16 +440,16 @@ textarea {
   font-size: 1.2rem;
 }
 
-.shopInfo {
+.shop-info {
   text-align: left;
   width: 70%;
 }
 
-.shopBusiness {
+.shop-business {
   margin-top: 20px;
 }
 
-.shopBtns {
+.shop-btns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -458,7 +458,7 @@ textarea {
 }
 
 .updateBtn,
-.deleteBtn {
+.delete-btn {
   padding: 15px 25px;
   font-size: 1.1rem;
   background-color: var(--color-green);
@@ -469,7 +469,7 @@ textarea {
 }
 
 .updateBtn:hover,
-.deleteBtn:hover {
+.delete-btn:hover {
   border: 2px solid black;
   padding: 13px 23px;
 }
