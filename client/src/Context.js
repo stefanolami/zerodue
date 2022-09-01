@@ -68,6 +68,14 @@ export class Provider extends Component {
         return await this.apiMethods.updateShop(id, shop);
     }
 
+    createOrder = async (order) => {
+        return await this.apiMethods.createOrder(order);
+    }
+
+    getOrders = async (id) => {
+        return await this.apiMethods.getOrders(id);
+    }
+
     signIn = async (username, password) => {
         const user = await this.apiMethods.getUser(username, password);
         if (user !== null) {
@@ -92,6 +100,17 @@ export class Provider extends Component {
         })
     }
 
+    formatDate = (date) => {
+        const newDate = new Date(date);
+        let day = newDate.getDate();
+        if (day < 10) day = "0" + day;
+        let month = newDate.getMonth() + 1;
+        if (month < 10) month = "0" + month;
+        const year = newDate.getFullYear();
+        const finalDate = day + '/' + month + '/' + year;
+        return finalDate;
+    }
+
     render() {
 
         const value = {
@@ -107,7 +126,10 @@ export class Provider extends Component {
                 searchAdvanced: this.searchAdvanced,
                 deleteShop: this.deleteShop,
                 updateShop: this.updateShop,
-                signIn: this.signIn
+                signIn: this.signIn,
+                formatDate: this.formatDate,
+                createOrder: this.createOrder,
+                getOrders: this.getOrders,
             }
         }
 

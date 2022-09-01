@@ -457,7 +457,7 @@ textarea {
   margin: 30px auto;
 }
 
-.updateBtn,
+.update-btn,
 .delete-btn {
   padding: 15px 25px;
   font-size: 1.1rem;
@@ -468,7 +468,7 @@ textarea {
   cursor: pointer;
 }
 
-.updateBtn:hover,
+.update-btn:hover,
 .delete-btn:hover {
   border: 2px solid black;
   padding: 13px 23px;

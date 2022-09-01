@@ -57,7 +57,7 @@ const ShopsList = (props) => {
                                                     <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkStringCity(shop.città)} {shop.cap}</Link>
                                                 </td>
                                                 <td>
-                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkString(shop.email)}</Link>
+                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{props.formatDate(shop.ultimo_contatto)}</Link>
                                                 </td>
                                             </tr>
                                         )

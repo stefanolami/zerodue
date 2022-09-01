@@ -46,7 +46,10 @@ const SearchByPlace = (props) => {
                         )
                     }
                 </div>
-                <ShopsList list={props.context.shopsListByPlace} />
+                <ShopsList 
+                    list={props.context.shopsListByPlace} 
+                    formatDate={props.context.actions.formatDate}
+                />
             </div>
         </React.Fragment>
     );

@@ -163,5 +163,27 @@ export default class Methods {
         throw new Error();
       }
     }
+
+    async createOrder(order) {
+      const response = await this.api('/orders-history', 'POST', order)
+      if (response.status === 201) {
+        return response;
+      } else if (response.status === 400) {
+        return response;
+      } else {
+          throw new Error();
+      }
+    }
+
+    async getOrders(id) {
+      const response = await this.api(`/orders-history/${id}`, 'GET')
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      } else if (response.status === 404) {
+        return null;
+      } else {
+        throw new Error();
+      }
+    }
   
   }

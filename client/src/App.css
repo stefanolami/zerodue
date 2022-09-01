@@ -434,7 +434,7 @@ label {
 }
 
 input[type="date"] {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 4px;
   padding: 5px;
   width: 50%;
@@ -593,6 +593,57 @@ input[type="date"] {
 }
 
 
+/* Orders Form */
+
+.form-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%;
+  margin: auto;
+}
+
+.form-orders-div {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.form-orders-div label {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-orders input[type="date"] {
+  width: 100%;
+}
+
+.form-orders input[type="text"] {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin: 0 0 8px;
+  padding: 5px;
+}
+
+.form-orders-btn {
+  width: 100%;
+  margin: 30px auto 70px;
+  padding: 10px 12px;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.form-orders-btn:hover,
+.form-orders-btn:focus {
+  border: 2px solid black;
+  padding: 8px 10px;
+}
+
 /* Shop */
 
 .shop {
@@ -618,21 +669,69 @@ input[type="date"] {
   width: 50%;
 }
 
+.shop-business-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-business-div div {
+  display: flex;
+  flex-direction: row;
+}
+
+.shop-business-div div div {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#shop-business-div-contattato {
+  display: flex;
+  flex-direction: column;
+}
+
+#ultimo-contatto-div {
+  width: 100%;
+}
+
+#ultimo-contatto-div span {
+  margin-right: 50px;
+}
+
 .shop h3 {
   margin-bottom: 30px;
 }
 
+.span-client {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 40px;
+  height: 25px;
+  text-align: center;
+  margin-right: 50px;
+  font-size: .9rem;
+}
+
+.span-client.si {
+  background-color: var(--color-green);
+}
+
+.span-client.no {
+  background-color: #c5c5c5;
+}
 
 .shop-btns {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 20%;
+  width: 38%;
   margin: 30px auto;
 }
 
-.updateBtn,
-.delete-btn {
+.update-btn,
+.delete-btn,
+.orders-btn {
   padding: 15px 25px;
   font-size: 1.1rem;
   background-color: var(--color-green);
@@ -642,14 +741,27 @@ input[type="date"] {
   cursor: pointer;
 }
 
-.updateBtn:hover,
-.delete-btn:hover {
-  border: 2px solid black;
-  padding: 13px 23px;
+.shop-btns a {
+  width: 30%;
 }
 
-.undefined-span {
-  font-size: 1.5rem;
+.update-btn,
+.orders-btn {
+  width: 100%;
+}
+
+.delete-btn {
+  width: 30%;
+}
+
+.update-btn:hover,
+.delete-btn:hover,
+.orders-btn:hover,
+.update-btn:focus,
+.delete-btn:focus,
+.orders-btn:focus {
+  border: 2px solid black;
+  padding: 13px 23px;
 }
 
 
@@ -704,6 +816,54 @@ input[type="date"] {
   margin-top: 2px;
 } */
 
+
+/* Orders History */
+
+.orders-history {
+  width: 40%;
+  margin: auto;
+}
+
+
+.orders-history h4 {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.add-order-btn {
+  padding: 10px 20px;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.add-order-btn:hover,
+.add-order-btn:focus {
+  border: 2px solid black;
+  padding: 8px 18px;
+}
+
+.orders-history a {
+  color: black;
+  cursor: pointer;
+}
+
+.orders-history a:focus,
+.orders-history a:hover {
+  color: var(--color-green);
+}
+
+
+/* Orders List */
+
+.orders-list {
+  margin: 50px auto;
+  width: 100%;
+}
 
 
 /* Errors */

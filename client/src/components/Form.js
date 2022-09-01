@@ -42,20 +42,28 @@ const Form = (props) => {
         let subDate = date.substring(0, 10);
         let lastDayString = subDate.slice(9);
         let lastDayInt = parseInt(lastDayString);
-        lastDayInt += 1;
-        let newDayString = lastDayInt.toString();
-        let newSubDate = subDate.substring(0, 9);
-        let newDate = newSubDate.concat('', newDayString);
-        return newDate;
+        if (lastDayInt === 9) {
+            lastDayInt += 1;
+            let newDayString = lastDayInt.toString();
+            let newSubDate = subDate.substring(0, 8);
+            let newDate = newSubDate.concat('', newDayString);
+            return newDate;
+        } else {
+            lastDayInt += 1;
+            let newDayString = lastDayInt.toString();
+            let newSubDate = subDate.substring(0, 9);
+            let newDate = newSubDate.concat('', newDayString);
+            return newDate;
+        }
+        
     }
 
     useEffect(() => {
         if (props.update) {
             props.getShop(props.id)
             .then(res => {
+                console.log(res)
                 if (res !== null) {
-                    console.log(res[0].ultimo_contatto.substring(0, 10))
-                    console.log(res[0])
                     setNome(res[0].nome);
                     setIndirizzo(res[0].indirizzo);
                     setCap(res[0].cap);
@@ -67,7 +75,9 @@ const Form = (props) => {
                     setTelefonoReferente(res[0].telefono_referente);
                     setNomeReferente(res[0].nome_referente);
                     setContattato(res[0].contattato);
-                    setUltimoContatto(fixDate(res[0].ultimo_contatto));
+                    if (res[0].ultimo_contatto) {
+                        setUltimoContatto(fixDate(res[0].ultimo_contatto));
+                    }
                     setCompra(res[0].compra);
                     setCliente(res[0].cliente)
                     setSfuso(res[0].sfuso);

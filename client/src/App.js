@@ -7,7 +7,8 @@ import Search from './components/Search';
 import SearchByPlace from './components/SearchByPlace';
 import AddShop from './components/AddShop';
 import Shop from './components/Shop';
-import ShopsListAdv from './components/ShopsListAdv';
+import OrdersHistory from './components/OrdersHistory';
+import AddOrder from './components/AddOrder';
 import AdvancedSearch from './components/AdvancedSearch';
 import LastAddedShops from './components/LastAddedShops';
 import UpdateShop from './components/UpdateShop';
@@ -24,7 +25,8 @@ const SearchWithContext = withContext(Search);
 const SearchByPlaceWithContext = withContext(SearchByPlace)
 const AddShopWithContext = withContext(AddShop);
 const ShopWithContext = withContext(Shop);
-const ShopsListAdvWithContext = withContext(ShopsListAdv);
+const OrdersHistoryWithContext = withContext(OrdersHistory);
+const AddOrderWithContext = withContext(AddOrder)
 const AdvancedSearchWithContext = withContext(AdvancedSearch);
 const LastAddedShopsWithContext = withContext(LastAddedShops);
 const UpdateShopWithContext = withContext(UpdateShop);
@@ -41,6 +43,8 @@ function App() {
             <Route path="/" element={<HomeWithContext />} />
             <Route path="/add-shop" element={<AddShopWithContext />} />
             <Route path="/shop/:id" element={<ShopWithContext />} />
+            <Route path="/orders-history/:id" element={<OrdersHistoryWithContext />} />
+            <Route path="/add-order/:id" element={<AddOrderWithContext />} />
             <Route path="/search" element={<SearchWithContext />} />
             <Route path="/search-by-place" element={<SearchByPlaceWithContext />} />
             <Route path="/advanced-search" element={<AdvancedSearchWithContext />} />

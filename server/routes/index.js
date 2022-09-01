@@ -99,7 +99,7 @@ router.get('/search', asyncHandler( async (req, res) => {
     const query = req.query.query;
 
     db.query(
-        'SELECT * FROM shops WHERE nome LIKE "%' + query + '%" OR indirizzo LIKE "%' + query + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefonoReferente = ? OR note  = ?',
+        'SELECT * FROM shops WHERE nome LIKE "%' + query + '%" OR indirizzo LIKE "%' + query + '%" OR cap = ? OR città = ? OR provincia = ? OR regione = ? OR email = ? OR telefono = ? OR telefono_referente = ? OR note  = ?',
         [query, query, query, query, query, query, query, query, query, query], (err, result) => {
             if (err) {
                 console.log(err.sqlMessage);
@@ -336,5 +336,50 @@ router.get('/user', asyncHandler( async (req, res) => {
         }
     )
 })) */
+
+router.post('/orders-history', asyncHandler( async (req, res) => {
+
+    const { shopId, orderDate, invoiceCode, invoiceDate } = req.body
+
+    db.query(
+        'INSERT INTO orders_history (shop_id, order_date, invoice_code, invoice_date) VALUES (?, ?, ?, ?)',
+        [shopId, orderDate, invoiceCode, invoiceDate], (err, result) => {
+            if (err) {
+                if (!shopId) {
+                    console.log(err.sqlMessage)
+                    res.status(400).send(err.sqlMessage)
+                } else {
+                    console.log(err)
+                    res.status(500).send(err)
+                }
+            } else {
+                console.log('values inserted')
+                console.log(result)
+                res.status(201).send(result)
+            }
+        }
+    )
+
+}))
+
+router.get('/orders-history/:id', asyncHandler( async (req, res) => {
+    
+    const id = req.params.id;
+
+    db.query(
+        'SELECT * FROM orders_history WHERE shop_id = ?', id, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('Orders not found')
+            } else {
+                console.log(result)
+                res.status(200).send(result);
+            }
+        }
+    )
+
+}))
 
 module.exports = router;

@@ -10,8 +10,8 @@ const Shop = (props) => {
     const navigate = useNavigate()
 
     const deleteShop = (id) => {
-        window.confirm("Sei sicuro di voler cancellare questo negozio?")
-        props.context.actions.deleteShop(id)
+        if (window.confirm("Sei sicuro di voler cancellare questo negozio?")) {
+            props.context.actions.deleteShop(id)
             .then(res => {
                 if (res === true) {
                     navigate('/');
@@ -23,10 +23,10 @@ const Shop = (props) => {
                 console.log(err.message);
                 navigate('/error')
             })
+        }
     }
 
     const formatDate = (date) => {
-        console.log(date)
         const newDate = new Date(date);
         let day = newDate.getDate();
         if (day < 10) day = "0" + day;
@@ -42,7 +42,6 @@ const Shop = (props) => {
             .then(res => {
                 if (res !== null) {
                     setShop(res[0])
-                    console.log(shop)
                 } else {
                     navigate('/notfound')
                 }
@@ -66,6 +65,7 @@ const Shop = (props) => {
                             <h3>{shop.nome}</h3>
                             <div className="shop-div">
                                 <div className="shop-info">
+                                    <p><strong>Email:</strong>&nbsp;&nbsp;{shop.email || "--"}</p>
                                     <p><strong>Indirizzo:</strong>&nbsp;&nbsp;{shop.indirizzo || "--"}</p>
                                     <p><strong>Cap:</strong>&nbsp;&nbsp;{shop.cap || "--"}</p>
                                     <p><strong>Città:</strong>&nbsp;&nbsp;{shop.città || "--"}</p>
@@ -74,7 +74,6 @@ const Shop = (props) => {
                                     <p><strong>Note:</strong>&nbsp;&nbsp;{shop.note || "--"}</p>
                                 </div>
                                 <div className="shop-business">
-                                    <p><strong>Email:</strong>&nbsp;&nbsp;{shop.email || "--"}</p>
                                     <p><strong>Telefono:</strong>&nbsp;&nbsp;{shop.telefono || "--"}</p>
                                     <p><strong>Telefono Referente:</strong>&nbsp;&nbsp;{shop.telefono_referente || "--"}</p>
                                     <p><strong>Nome Referente:</strong>&nbsp;&nbsp;{shop.nome_referente || "--"}</p>
@@ -83,10 +82,10 @@ const Shop = (props) => {
                                             <div>
                                                 <p><strong>Cliente</strong></p>
                                                 {
-                                                    shop.cliente === "1" ? (
+                                                    shop.cliente === 1 ? (
                                                         <span className="span-client si">Si</span>
                                                     ) : (
-                                                        <span className="span-client no">Si</span> 
+                                                        <span className="span-client no">No</span> 
                                                     )
                                                 }
                                             </div>
@@ -96,81 +95,69 @@ const Shop = (props) => {
                                                     shop.compra === 1 ? (
                                                         <span className="span-client si">Si</span>
                                                     ) : (
-                                                        <span className="span-client no">Si</span> 
+                                                        <span className="span-client no">No</span> 
                                                     )
                                                 }
                                             </div>
+                                        </div>
+                                        <div>
                                             <div>
                                                 <p><strong>Buste</strong></p>
                                                 {
-                                                    shop.buste === "1" ? (
+                                                    shop.buste === 1 ? (
                                                         <span className="span-client si">Si</span>
                                                     ) : (
-                                                        <span className="span-client no">Si</span> 
+                                                        <span className="span-client no">No</span> 
                                                     )
                                                 }
                                             </div>
                                             <div>
                                                 <p><strong>Sfuso</strong></p>
                                                 {
-                                                    shop.sfuso ===  "1" ? (
+                                                    shop.sfuso ===  1 ? (
                                                         <span className="span-client si">Si</span>
                                                     ) : (
-                                                        <span className="span-client no">Si</span> 
+                                                        <span className="span-client no">No</span> 
                                                     )
                                                 }
                                             </div>
                                         </div>
+                                        <div id="shop-business-div-contattato">
+                                            <div>
+                                                <p><strong>Contattato</strong></p>
+                                                {
+                                                    shop.contattato ===  1 ? (
+                                                        <span className="span-client si">Si</span>
+                                                    ) : (
+                                                        <span className="span-client no">No</span> 
+                                                    )
+                                                }
+                                            </div>
+                                                {
+                                                    shop.ultimo_contatto && shop.contattato === 1 ? (
+                                                        <div id="ultimo-contatto-div">
+                                                            <p><strong>Ultimo Contatto</strong></p>
+                                                            <span>{formatDate(shop.ultimo_contatto)}</span>
+                                                        </div>
+                                                    ) : (null)
+                                                }
+                                        </div>
                                     </div>
-                                    {
-                                        shop.contattato === 1 ? (
-                                            <p><strong>Contattato</strong></p>
-                                        ) : (
-                                            <React.Fragment></React.Fragment>
-                                        )
-                                    }
-                                    {
-                                        shop.riContattato === 1 ? (
-                                            <p><strong>RiContattare</strong></p>
-                                        ) : (
-                                            <React.Fragment></React.Fragment>
-                                        )
-                                    }
-                                    {
-                                        shop.compra === 1 ? (
-                                            <p><strong>Compra</strong> {
-                                                shop.imbustato === 1 ? (
-                                                    <span>Imbustato </span>
-                                                ) : (
-                                                    <React.Fragment></React.Fragment>
-                                                )
-                                            }
-                                            {
-                                                shop.sfuso === 1 ? (
-                                                    <span>Sfuso </span>
-                                                ) : (
-                                                    <React.Fragment></React.Fragment>
-                                                )
-                                            }</p>
-                                        ) : (
-                                            <React.Fragment></React.Fragment>
-                                        )
-                                    }
-                                    {
-                                        shop.ultimo_contatto ? <span>{formatDate(shop.ultimo_contatto)}</span> : null
-                                    }
                                 </div>
                             </div>
                         </div>
                         <div className="shop-btns">
+                            <Link to={`/orders-history/${id}`}>
+                                <button className="orders-btn">Storico Ordini</button>
+                            </Link>
                             <Link to={`/update/${id}`}>
-                                <button className="updateBtn">Aggiorna</button>
+                                <button className="update-btn">Aggiorna</button>
                             </Link>
                             <button className="delete-btn" onClick={() => deleteShop(id)}>Cancella</button>  
                         </div>
                     </React.Fragment>
                 ) : (
-                    <React.Fragment></React.Fragment>
+                    null
                 )
             }
         </React.Fragment>

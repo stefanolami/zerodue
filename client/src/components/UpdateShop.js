@@ -16,17 +16,17 @@ const UpdateShop = (props) => {
         e.preventDefault();
         if (shop.nome) {
             props.context.actions.updateShop(id, shop)
-            .then(res => {
-                if (res === true) {
-                    navigate("/")
-                } else if (res.status === 400) {
-                    setErrors("Inserisci un nome");
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                /* navigate('/error'); */
-            })
+                .then(res => {
+                    if (res === true) {
+                        navigate(`/shop/${id}`)
+                    } else if (res.status === 400) {
+                        setErrors("Inserisci un nome");
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                    /* navigate('/error'); */
+                })
         } else {
             setErrors("Inserisci un nome");
         }
