@@ -6,13 +6,14 @@ import Navigation from './Navigation';
 
 const LastAddedShops = (props) => {
 
-    const [show, setShow] = useState(false)
-
     return (
         <React.Fragment>
             <Navigation />
             <h2 className="last-added-title">Ultimi Aggiunti</h2>
-            <ShopsList list={props.context.lastAdded} />
+            <ShopsList 
+                list={props.context.lastAdded} 
+                formatDate={props.context.actions.formatDate}
+            />
         </React.Fragment>
     )
 }

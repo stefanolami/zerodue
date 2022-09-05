@@ -10,6 +10,8 @@ const AddShop = (props) => {
 
     const [errors, setErrors] = useState();
 
+    const [submitted, setSubmitted] = useState(false);
+
     const submit = (e, shop) => {
         e.preventDefault();
         
@@ -17,7 +19,8 @@ const AddShop = (props) => {
             props.context.actions.createShop(shop)
             .then(res => {
                 if (res) {
-                    navigate("/")
+                    setSubmitted('Negozio Creato!')
+                    setTimeout(() => navigate("/"), 1500)
                 } else if (res.status === 400) {
                     setErrors("Inserisci un nome");
                 }
@@ -42,6 +45,7 @@ const AddShop = (props) => {
                 title="Aggiungi Negozio"
                 button="Aggiungi"
                 update={false}
+                submitted={submitted}
             />
         </React.Fragment>
     )

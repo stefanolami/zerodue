@@ -11,6 +11,7 @@ import OrdersHistory from './components/OrdersHistory';
 import AddOrder from './components/AddOrder';
 import AdvancedSearch from './components/AdvancedSearch';
 import LastAddedShops from './components/LastAddedShops';
+import ClientsList from './components/ClientsList';
 import UpdateShop from './components/UpdateShop';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
@@ -29,6 +30,7 @@ const OrdersHistoryWithContext = withContext(OrdersHistory);
 const AddOrderWithContext = withContext(AddOrder)
 const AdvancedSearchWithContext = withContext(AdvancedSearch);
 const LastAddedShopsWithContext = withContext(LastAddedShops);
+const ClientsListWithContext = withContext(ClientsList);
 const UpdateShopWithContext = withContext(UpdateShop);
 const PrivateRouteWithContext = withContext(PrivateRoute);
 const SigninWithContext = withContext(SignIn);
@@ -48,6 +50,7 @@ function App() {
             <Route path="/search" element={<SearchWithContext />} />
             <Route path="/search-by-place" element={<SearchByPlaceWithContext />} />
             <Route path="/advanced-search" element={<AdvancedSearchWithContext />} />
+            <Route path="clients-list" element={<ClientsListWithContext />} />
             <Route path="/last-added" element={<LastAddedShopsWithContext />} />
             <Route path="/update/:id" element={<UpdateShopWithContext />} />
           </Route>

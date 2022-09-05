@@ -3,12 +3,14 @@ import {useNavigate, useParams} from 'react-router-dom';
 
 import Form from "./Form";
 import FormTest from "./FormTest";
+import Navigation from "./Navigation";
 
 const UpdateShop = (props) => {
 
     const navigate = useNavigate();
 
     const [errors, setErrors] = useState();
+    const [submitted, setSubmitted] = useState(false);
 
     const { id } = useParams();
 
@@ -18,7 +20,8 @@ const UpdateShop = (props) => {
             props.context.actions.updateShop(id, shop)
                 .then(res => {
                     if (res === true) {
-                        navigate(`/shop/${id}`)
+                        setSubmitted('Negozio Aggiornato!')
+                        setTimeout(() => navigate(`/shop/${id}`), 1500)
                     } else if (res.status === 400) {
                         setErrors("Inserisci un nome");
                     }
@@ -33,15 +36,20 @@ const UpdateShop = (props) => {
     }
 
     return (
-        <Form
-            submit={submit}
-            errors={errors}
-            id={id}
-            getShop={props.context.actions.getShop}
-            title="Aggiorna Negozio"
-            button="Aggiorna"
-            update={true}
-         />
+        <React.Fragment>
+            <Navigation />
+            <Form
+                submit={submit}
+                errors={errors}
+                id={id}
+                getShop={props.context.actions.getShop}
+                title="Aggiorna Negozio"
+                button="Aggiorna"
+                update={true}
+                submitted={submitted}
+            />
+        </React.Fragment>
+        
     )
 }
 

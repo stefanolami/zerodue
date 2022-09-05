@@ -565,6 +565,12 @@ input[type="date"] {
   font-weight: bold;
 }
 
+.submit-confirmation {
+  margin: 40px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-green);
+}
+
 /* .form input:focus {
   border: 2px solid var(--color-green);
 } */

@@ -7,14 +7,17 @@ const Shop = (props) => {
 
     const { id } = useParams();
     const [shop, setShop] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const [submitted, setSubmitted] = useState(false)
 
     const deleteShop = (id) => {
         if (window.confirm("Sei sicuro di voler cancellare questo negozio?")) {
             props.context.actions.deleteShop(id)
             .then(res => {
                 if (res === true) {
-                    navigate('/');
+                    setSubmitted('Negozio Cancellato!')
+                    setTimeout(() => navigate("/"), 1500)
                 } else {
                     navigate('/error');
                 }
@@ -146,6 +149,13 @@ const Shop = (props) => {
                                 </div>
                             </div>
                         </div>
+                        {
+                            submitted ? (
+                                <h4 className="submit-confirmation">{submitted}</h4>
+                            ) : (
+                                null
+                            )
+                        }
                         <div className="shop-btns">
                             <Link to={`/orders-history/${id}`}>
                                 <button className="orders-btn">Storico Ordini</button>

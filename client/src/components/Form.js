@@ -38,24 +38,137 @@ const Form = (props) => {
         props.submit(e, shop);
     }
 
-    const fixDate = (date) => {
+    /* const fixDate = (date) => {
+        console.log('date',date)
         let subDate = date.substring(0, 10);
+        console.log('subDate',subDate)
         let lastDayString = subDate.slice(9);
+        console.log('lastdaystring',lastDayString)
         let lastDayInt = parseInt(lastDayString);
         if (lastDayInt === 9) {
             lastDayInt += 1;
             let newDayString = lastDayInt.toString();
             let newSubDate = subDate.substring(0, 8);
             let newDate = newSubDate.concat('', newDayString);
+            
             return newDate;
         } else {
             lastDayInt += 1;
             let newDayString = lastDayInt.toString();
             let newSubDate = subDate.substring(0, 9);
             let newDate = newSubDate.concat('', newDayString);
+            
             return newDate;
-        }
-        
+        }  
+    } */
+
+    const fixDate = (date) => {
+        let subDate = date.substring(0, 10);
+        let lastDayString = subDate.slice(8);
+        let lastDayInt = parseInt(lastDayString);
+        const month = subDate.slice(5, 7)
+        if (month === '02') {
+            if (lastDayInt === 28) {
+                const newDay = '01';
+                const newMonth = '03';
+                const year = date.substring(0, 4);
+                const newDate = `${year}-${newMonth}-${newDay}`;
+                return newDate;
+            } else {
+                lastDayInt += 1;
+                let newDayString = lastDayInt.toString();
+                if (newDayString.length === 1) {
+                    newDayString = '0' + newDayString;
+                }
+                let newSubDate = subDate.substring(0, 8);
+                let newDate = newSubDate.concat('', newDayString);
+                return newDate;
+            }
+        } else if (month === '12') {
+            if (lastDayInt === 31) {
+                const newDay = '01';
+                const newMonth = '01';
+                const year = date.substring(0, 4);
+                let yearInt = parseInt(year);
+                yearInt += 1;
+                const newYearString = yearInt.toString()
+                const newDate = `${newYearString}-${newMonth}-${newDay}`;
+                return newDate;
+            } else {
+                lastDayInt += 1;
+                let newDayString = lastDayInt.toString();
+                if (newDayString.length === 1) {
+                    newDayString = '0' + newDayString;
+                }
+                let newSubDate = subDate.substring(0, 8);
+                let newDate = newSubDate.concat('', newDayString);
+                return newDate;
+            }
+        } else if (month === '11' || month === '09') {
+            if (lastDayInt === 30) {
+                const newDay = '01';
+                const month = date.substring(5, 7);
+                let monthInt = parseInt(month);
+                monthInt += 1;
+                const monthString = monthInt.toString();
+                let year = date.substring(0, 4);
+                const newDate = `${year}-${monthString}-${newDay}`;
+                return newDate;
+            } else {
+                lastDayInt += 1;
+                let newDayString = lastDayInt.toString();
+                if (newDayString.length === 1) {
+                    newDayString = '0' + newDayString;
+                }
+                let newSubDate = subDate.substring(0, 8);
+                let newDate = newSubDate.concat('', newDayString);
+                return newDate;
+            }
+        } else if (month === '04' || month === '06') {
+            if (lastDayInt === 30) {
+                const newDay = '01';
+                const month = date.substring(5, 7);
+                let monthInt = parseInt(month);
+                monthInt += 1;
+                const monthString = monthInt.toString();
+                const newMonthString = '0' + monthString;
+                let year = date.substring(0, 4);
+                const newDate = `${year}-${newMonthString}-${newDay}`;
+                return newDate;
+            } else {
+                lastDayInt += 1;
+                let newDayString = lastDayInt.toString();
+                if (newDayString.length === 1) {
+                    newDayString = '0' + newDayString;
+                }
+                let newSubDate = subDate.substring(0, 8);
+                let newDate = newSubDate.concat('', newDayString);
+                return newDate;
+            }
+        } else {
+            if (lastDayInt === 31) {
+                const newDay = '01';
+                const month = date.substring(5, 7);
+                let monthInt = parseInt(month);
+                monthInt += 1;
+                let monthString = monthInt.toString();
+                if (monthString.length === 1) {
+                    monthString = '0' + monthString;
+                }
+                let year = date.substring(0, 4);
+                const newDate = `${year}-${monthString}-${newDay}`;
+                return newDate;
+            } else {
+                lastDayInt += 1;
+                let newDayString = lastDayInt.toString();
+                if (newDayString.length === 1) {
+                    newDayString = '0' + newDayString;
+                }
+                let newSubDate = subDate.substring(0, 8);
+                let newDate = newSubDate.concat('', newDayString);
+                return newDate;
+            }
+        }          
     }
 
     useEffect(() => {
@@ -218,6 +331,13 @@ const Form = (props) => {
                             }
                     </div>
                 </div>
+                {
+                    props.submitted ? (
+                        <h4 className="submit-confirmation">{props.submitted}</h4>
+                    ) : (
+                        null
+                    )
+                }
                 <button className="add-btn" type="submit">{props.button}</button>
             </form>
         </div>
