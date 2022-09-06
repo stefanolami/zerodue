@@ -76,6 +76,10 @@ export class Provider extends Component {
         return await this.apiMethods.getOrders(id);
     }
 
+    getLastAdded = async (limit) => {
+        return await this.apiMethods.getLastAdded(limit);
+    }
+
     signIn = async (username, password) => {
         const user = await this.apiMethods.getUser(username, password);
         if (user !== null) {
@@ -130,6 +134,7 @@ export class Provider extends Component {
                 formatDate: this.formatDate,
                 createOrder: this.createOrder,
                 getOrders: this.getOrders,
+                getLastAdded: this.getLastAdded
             }
         }
 

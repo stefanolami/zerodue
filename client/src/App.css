@@ -771,56 +771,77 @@ input[type="date"] {
 }
 
 
-/* ShopsList */
+/* shops-list */
 
-.shopsList {
+.shops-list {
   width: 70%;
-  margin: 40px auto;
+  margin: 40px auto 80px;
   text-align: left;
 }
 
-.shopsList table {
+.shops-list table {
   width: 100%;
 }
 
-.shopsList a {
+.shops-list a {
   color: black;
   cursor: pointer;
 }
 
-.shopsList a:hover,
-.shopsList a:focus {
+.shops-list a:hover,
+.shops-list a:focus {
   color: black;
 }
 
 
 
-.shopsList tr:hover,
-.shopsList tr:focus  {
+.shops-list tr:hover,
+.shops-list tr:focus  {
   background-color: var(--color-green);
 }
 
-.shopsList thead tr:hover,
-.shopsList thead tr:focus {
+.shops-list thead tr:hover,
+.shops-list thead tr:focus {
   background-color: white;
 }
 
-/* .shopsListDiv {
-  display: grid;
-  grid-template-columns: repeat(4, calc(25% - 1.5px));
-  column-gap: 2px;
-  margin: 0 2px 2px 2px;
+td {
+  width: 25%;
 }
 
-.shopsListDiv div {
-  padding: 8px;
-  background-color: white;
-  color: black;
+.last-added-limit {
+  width: 5%;
+  margin-left: 80%;
+  margin-bottom: 50px;
+  
 }
 
-.shopsList a:first-child {
-  margin-top: 2px;
-} */
+.last-added-limit input {
+  width: 100%;
+  border: 2px solid black !important;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.last-added-limit input:focus {
+  outline: none;
+  border: 3px solid var(--color-green) !important;
+  padding: 3px;
+}
+
+.last-added-limit #dropdown {
+  margin-top: 0;
+}
+
+.last-added-limit .input-arrow-div {
+  top: 58%;
+  right: 7px;
+}
+
+.last-added-limit .input-clear-div {
+  top: 60%;
+  right: 20px;
+}
 
 
 /* Orders History */

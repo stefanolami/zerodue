@@ -185,5 +185,16 @@ export default class Methods {
         throw new Error();
       }
     }
+
+    async getLastAdded(limit) {
+      const response = await this.api(`/last-added/${limit}`, 'GET')
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      } else if (response.status === 404) {
+        return null;
+      } else {
+        throw new Error();
+      }
+    }
   
   }

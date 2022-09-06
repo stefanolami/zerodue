@@ -12,11 +12,6 @@ const SelectComponent = React.forwardRef( ({
 
     const [inputValue, setInputValue] = useState();
 
-    /* useEffect = (() => {
-        if (selectedKey) {
-            setInputValue(Object.keys(options.italia).find((opt, index) => index === selectedKey))
-        }
-    }, [selectedKey]) */
 
     const onInputChange = (e) => {
         setInputValue(e.target.value);
@@ -89,17 +84,6 @@ const SelectComponent = React.forwardRef( ({
                                 })
                             )
                         }
-                        {/* {Object.keys(options).map((opt, index) => {
-                            return (
-                                <div 
-                                    key={index}
-                                    onClick={() => onItemSelected(opt, index)}
-                                    className="dropdown-option"
-                                >
-                                    {opt}
-                                </div>
-                            )
-                        })} */}
                     </div>
                 </div>
             ) : (null)}

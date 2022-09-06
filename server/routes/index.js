@@ -410,4 +410,23 @@ router.get('/clients-list', asyncHandler( async (req, res) => {
 
 }))
 
+router.get('/last-added/:limit', asyncHandler( async (req, res) => {
+
+    limit = req.params.limit
+
+    db.query(
+        `SELECT * FROM shops ORDER BY created_at DESC LIMIT ${limit}`, (err, result) => {
+            if (err) {
+                console.log(err.sqlMessage);
+                res.send(err);
+            } else if (result.length === 0) {
+                res.status(404).send('No Shop found')
+            } else {
+                res.status(200).send(result);
+            }
+        }
+    )
+
+}))
+
 module.exports = router;

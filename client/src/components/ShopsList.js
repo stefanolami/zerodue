@@ -16,20 +16,9 @@ const ShopsList = (props) => {
         } 
     }
 
-    const checkStringCity = (string) => {
-        if (string) {
-            if (string.length > 15) {
-                const newString = string.substring(0, 15)
-                return newString + '...'
-            } else {
-                return string
-            }
-        } 
-    }
-
 
     return (
-        <div className="shopsList">
+        <div className="shops-list">
             {
                 props.list ? (
                     <Table striped bordered hover>
@@ -38,7 +27,7 @@ const ShopsList = (props) => {
                                 <th>Nome</th>
                                 <th>Indirizzo</th>
                                 <th>Città</th>
-                                <th>Contattato</th>
+                                <th>Ultimo Contatto</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,13 +40,16 @@ const ShopsList = (props) => {
                                                     <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkString(shop.nome)}</Link>
                                                 </td>
                                                 <td>
-                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkString(shop.indirizzo)}</Link>
+                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkString(shop.indirizzo) || "--"}</Link>
                                                 </td>
                                                 <td>
-                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{checkStringCity(shop.città)} {shop.cap}</Link>
+                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{shop.città ? checkString(shop.città) : "--"}</Link>
                                                 </td>
                                                 <td>
-                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>{props.formatDate(shop.ultimoContatto)}</Link>
+                                                    <Link to={`/shop/${shop.id}`} key={index} style={{textDecoration: 'none'}}>
+                                                    {
+                                                        shop.contattato ? props.formatDate(shop.ultimo_contatto) : "--"
+                                                    }</Link>
                                                 </td>
                                             </tr>
                                         )

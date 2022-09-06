@@ -37,6 +37,7 @@ const Shop = (props) => {
         if (month < 10) month = "0" + month;
         const year = newDate.getFullYear();
         const finalDate = day + '/' + month + '/' + year;
+        console.log(finalDate)
         return finalDate;
     }
 
