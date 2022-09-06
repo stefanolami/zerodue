@@ -76,6 +76,10 @@ export class Provider extends Component {
         return await this.apiMethods.getOrders(id);
     }
 
+    getClients = async (orderBy, direction) => {
+        return await this.apiMethods.getClients(orderBy, direction);
+    }
+
     getLastAdded = async (limit) => {
         return await this.apiMethods.getLastAdded(limit);
     }
@@ -134,6 +138,7 @@ export class Provider extends Component {
                 formatDate: this.formatDate,
                 createOrder: this.createOrder,
                 getOrders: this.getOrders,
+                getClients: this.getClients,
                 getLastAdded: this.getLastAdded
             }
         }

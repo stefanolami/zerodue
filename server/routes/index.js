@@ -393,10 +393,13 @@ router.get('/orders-history/:id', asyncHandler( async (req, res) => {
 
 }))
 
-router.get('/clients-list', asyncHandler( async (req, res) => {
+router.get('/clients-list/:orderBy/:direction', asyncHandler( async (req, res) => {
+
+    const orderBy = req.params.orderBy;
+    const direction = req.params.direction;
 
     db.query(
-        'SELECT * FROM shops WHERE cliente = ?', 1, (err, result) => {
+        `SELECT * FROM shops WHERE cliente = ? ORDER BY ${orderBy} ${direction}`, 1, (err, result) => {
             if (err) {
                 console.log(err.sqlMessage);
                 res.send(err);
@@ -412,7 +415,7 @@ router.get('/clients-list', asyncHandler( async (req, res) => {
 
 router.get('/last-added/:limit', asyncHandler( async (req, res) => {
 
-    limit = req.params.limit
+    const limit = req.params.limit;
 
     db.query(
         `SELECT * FROM shops ORDER BY created_at DESC LIMIT ${limit}`, (err, result) => {

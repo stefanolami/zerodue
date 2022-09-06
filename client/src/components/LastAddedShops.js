@@ -32,7 +32,7 @@ const LastAddedShops = (props) => {
         <React.Fragment>
             <Navigation />
             <h2 className="last-added-title">Ultimi Aggiunti</h2>
-            <div className="last-added-limit">
+            <div className="list-filter">
             <SelectComponent
                 options={limitOptions}
                 onChange={(item) => setLimit(item)}

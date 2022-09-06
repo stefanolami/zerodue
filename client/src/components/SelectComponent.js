@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import WithClickOutside from './WithClickOutside';
 
+import sortIcon from '../images/icon-sort.jpg';
+
 const SelectComponent = React.forwardRef( ({
     options,
     onChange,
     open,
     setOpen,
     value,
-    label,
+    label
 }, ref) => {
 
     const [inputValue, setInputValue] = useState();
-
 
     const onInputChange = (e) => {
         setInputValue(e.target.value);
@@ -39,7 +40,7 @@ const SelectComponent = React.forwardRef( ({
     return (
         <React.Fragment>
             { options ? (
-                <div className="dropdown-div" ref={ref}>
+                <div className="dropdown-div" ref={ref} spellCheck={false}>
                     <div className="input-div" onClick={onInputClick}>
                         <label>&nbsp;{label}
                             <input
@@ -52,9 +53,14 @@ const SelectComponent = React.forwardRef( ({
                         <div className="input-arrow-div">
                             <i className="input-arrow" />
                         </div>
-                        {inputValue ? <div onClick={clearDropdown} className="input-clear-div">
-                            x
-                        </div> : null}
+                        {
+                            inputValue ? <div onClick={clearDropdown} className="input-clear-div">x</div> : null
+                        }
+                        {/* {
+                            filter ? (<div className="clients-list-sort">
+                                        <img src={sortIcon} alt="sort icon" onClick={() => direction === "ASC" ? setDirection("DESC") : setDirection("ASC")} />
+                                    </div>) : null
+                        } */}
                     </div>
                     <div className={`dropdown ${open ? "visible" : ""}`} id="dropdown" >
                         {

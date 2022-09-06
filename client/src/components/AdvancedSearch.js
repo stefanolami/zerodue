@@ -143,7 +143,10 @@ const AdvancedSearch = (props) => {
             
             {
                 showList ? (
-                    <ShopsList list={shopsList} />
+                    <ShopsList
+                        list={shopsList} 
+                        formatDate={props.context.actions.formatDate}
+                    />
                 ) : (
                     null
                 )

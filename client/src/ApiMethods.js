@@ -186,6 +186,21 @@ export default class Methods {
       }
     }
 
+    async getClients(orderBy, direction) {
+      let newOrderBy = orderBy;
+      if (orderBy === "ultimo contatto") {
+        newOrderBy = "ultimo_contatto"
+      } 
+      const response = await this.api(`/clients-list/${newOrderBy}/${direction}`, 'GET')
+      if (response.status === 200) {
+        return response.json().then(data => data);
+      } else if (response.status === 404) {
+        return null;
+      } else {
+        throw new Error();
+      }
+    }
+
     async getLastAdded(limit) {
       const response = await this.api(`/last-added/${limit}`, 'GET')
       if (response.status === 200) {

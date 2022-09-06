@@ -656,7 +656,7 @@ input[type="date"] {
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin: 70px auto;
+  margin: 70px auto 0;
   font-size: 1.2rem;
   text-align: left;
 }
@@ -738,7 +738,7 @@ input[type="date"] {
 .update-btn,
 .delete-btn,
 .orders-btn {
-  padding: 15px 25px;
+  padding: 12px 25px;
   font-size: 1.1rem;
   background-color: var(--color-green);
   border-radius: 4px;
@@ -809,40 +809,71 @@ td {
   width: 25%;
 }
 
-.last-added-limit {
+.list-filter {
   width: 5%;
   margin-left: 80%;
-  margin-bottom: 50px;
-  
 }
 
-.last-added-limit input {
+.list-filter input {
   width: 100%;
   border: 2px solid black !important;
   border-radius: 4px;
   padding: 4px;
+  cursor: pointer;
 }
 
-.last-added-limit input:focus {
+.list-filter input:focus {
   outline: none;
   border: 3px solid var(--color-green) !important;
   padding: 3px;
 }
 
-.last-added-limit #dropdown {
+.list-filter #dropdown {
   margin-top: 0;
 }
 
-.last-added-limit .input-arrow-div {
+.list-filter .input-arrow-div {
   top: 58%;
   right: 7px;
 }
 
-.last-added-limit .input-clear-div {
+.list-filter .input-clear-div {
   top: 60%;
   right: 20px;
 }
 
+.list-filter.clients {
+  margin-left: 0;
+  width: 55%;
+
+}
+
+.clients-list-selectors {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-left: 80%;
+  justify-content: flex-start;
+}
+
+
+
+.clients-list-sort {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-green);
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.clients-list-sort img {
+  width: 70%;
+  margin: auto;
+}
 
 /* Orders History */
 
