@@ -12,9 +12,7 @@ const Navigation = () => {
     return (
         <div className="navigation">
             <div className="navigation-div">
-                <NavLink to="/search" className={({ isActive }) =>
-    isActive ? 'active' : 'inactive'
-  }>
+                <NavLink to="/search">
                     <div>
                         <img src={searchIcon} alt="search icon" />
                     </div>

@@ -8,5 +8,3 @@ exports.asyncHandler = (cb) => {
       }
     };
 }
-
-/* (err.name === 'SequelizeValidationError'|| err.name === "SequelizeUniqueConstraintError") */

@@ -45,16 +45,7 @@ svg {
 
 /* Header */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 header {
   display: flex;
@@ -69,15 +60,27 @@ header {
   margin: auto;
 }
 
-.headerDiv {
+/* .headerDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
+} */
+
+.header-btn {
+  width: 100%;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
 }
 
-header p {
-  font-size: 1.4rem;
-  margin-right: 40px;
+.header-btn:hover,
+.header-btn:focus {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px 23px;
 }
 
 
@@ -767,7 +770,7 @@ input[type="date"] {
 .delete-btn:focus,
 .orders-btn:focus {
   border: 2px solid black;
-  padding: 13px 23px;
+  padding: 10px 23px;
 }
 
 

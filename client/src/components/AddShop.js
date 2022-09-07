@@ -26,15 +26,13 @@ const AddShop = (props) => {
                 }
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.message);
+                navigate("/error")
             })
         } else {
             setErrors("Inserisci un nome");
         }
     }
-
-/*     const [selectedOption, setSelectedOptions] = useState("");
- */    
 
     return (
         <React.Fragment>

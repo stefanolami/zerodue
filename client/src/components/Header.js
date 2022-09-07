@@ -1,12 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import logo from "../images/zerodue-logo.jpg";
-import Search from './Search'
-
-import withContext from '../Context';
-
-const SearchWithContext = withContext(Search);
-
 
 const Header = (props) => {
     return (
@@ -19,10 +13,10 @@ const Header = (props) => {
                 {
                     props.context.authenticatedUser ? (
                         <div className="headerDiv">
-                            <p>Ciao {props.context.authenticatedUser.username}!</p>
+                            <button className="header-btn" onClick={props.context.actions.signOut}>Disconnetti</button>
                         </div>
                     ) : (
-                        <React.Fragment></React.Fragment>
+                        null
                     )
                 }       
         </header>

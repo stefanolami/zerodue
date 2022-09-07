@@ -6,31 +6,7 @@ const saltRounds = 10;
 const {asyncHandler} = require('../middleware/async-handler');
 const { authenticateUsers } = require('../middleware/auth-user');
 
-/* router.post('/create',async (req, res) => {
 
-    const {
-        nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
-    } = req.body
-
-    db.query(
-        'INSERT INTO shops (nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        [nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note], (err, result) => {
-            if (err) {
-                if (err.code === "ER_BAD_NULL_ERROR") {
-                    console.log("ciaoooooo")
-                    console.log(err.sqlMessage)
-                    res.status(400).send(err.sqlMessage)
-                } else {
-                    console.log(err)
-                    res.status(500).send(err)
-                }
-            } else {
-                console.log('values inserted')
-                res.status(201).send('values inserted')
-            }
-        }
-    )
-}) */
 
 router.post('/create',asyncHandler(async (req, res) => {
 
@@ -51,7 +27,6 @@ router.post('/create',asyncHandler(async (req, res) => {
                 }
             } else {
                 console.log('values inserted')
-                console.log(result)
                 res.status(201).send(result)
             }
         }
@@ -86,7 +61,6 @@ router.get('/shop/:id', asyncHandler(async (req, res) => {
             } else if (result.length === 0) {
                 res.status(404).send('Shop not found')
             } else {
-                console.log(result)
                 res.status(200).send(result);
             }
         }
@@ -107,7 +81,6 @@ router.get('/search', asyncHandler( async (req, res) => {
             } else if (result.length === 0) {
                 res.status(404).send('Nothing found')
             } else {
-                console.log(result)
                 res.status(200).send(result);
             }
         }
@@ -185,10 +158,6 @@ router.get('/advsearch', asyncHandler( async (req, res) => {
         inputs.push(req.query.note);
     }
 
-    console.log(inputs);
-    
-    console.log(dbQuery);
-
     db.query(dbQuery, inputs, (err, result) => {
             if (err) {
                 console.log(err.sqlMessage);
@@ -196,7 +165,6 @@ router.get('/advsearch', asyncHandler( async (req, res) => {
             } else if (result.length === 0) {
                 res.status(404).send('Nothing found')
             } else {
-                console.log(result);
                 res.status(200).send(result);
             }
         }
@@ -231,8 +199,6 @@ router.delete('/shop/:id', asyncHandler( async (req, res) => {
 }))
 
 router.put('/shop/:id', asyncHandler( async (req, res) => {
-
-    console.log("updating")
 
     const id = req.params.id;
 
@@ -330,24 +296,6 @@ router.get('/user', asyncHandler( async (req, res) => {
 
 }))
 
-/* router.get('/user', authenticateUsers, asyncHandler( async (req, res) => {
-
-    const username = req.query.username;
-    
-    db.query(
-        'SELECT * FROM users WHERE username = ?', username, (err, result) => {
-            if (err) {
-                console.log(err.sqlMessage);
-                res.send(err);
-            } else if (result.length === 0) {
-                res.status(404).send('User not found')
-            } else {
-                res.status(200).send(result); 
-            }
-        }
-    )
-})) */
-
 router.post('/orders-history', asyncHandler( async (req, res) => {
 
     const { shopId, orderDate, invoiceCode, invoiceDate } = req.body
@@ -365,7 +313,6 @@ router.post('/orders-history', asyncHandler( async (req, res) => {
                 }
             } else {
                 console.log('values inserted')
-                console.log(result)
                 res.status(201).send(result)
             }
         }
@@ -385,7 +332,6 @@ router.get('/orders-history/:id', asyncHandler( async (req, res) => {
             } else if (result.length === 0) {
                 res.status(404).send('Orders not found')
             } else {
-                console.log(result)
                 res.status(200).send(result);
             }
         }

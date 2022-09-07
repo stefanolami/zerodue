@@ -20,7 +20,6 @@ export class Provider extends Component {
 
     createShop = async (shop) => {
         const newShop = await this.apiMethods.createShop(shop);
-        console.log(newShop)
         if (this.state.lastAdded.length > 5) {
             let newArray = this.state.lastAdded;
             newArray.shift();
@@ -100,6 +99,15 @@ export class Provider extends Component {
         return user;
     }
 
+    signOut = () => {
+        this.setState(() => {
+            return {
+                authenticatedUser: null
+            }
+        });
+        Cookies.remove('authenticatedUser');
+    }
+
     setShopsListByPlace = (list) => {
         this.setState(() => {
             return {
@@ -135,6 +143,7 @@ export class Provider extends Component {
                 deleteShop: this.deleteShop,
                 updateShop: this.updateShop,
                 signIn: this.signIn,
+                signOut: this.signOut,
                 formatDate: this.formatDate,
                 createOrder: this.createOrder,
                 getOrders: this.getOrders,

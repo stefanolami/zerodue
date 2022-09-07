@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 import ShopsList from "./ShopsList";
 import Navigation from "./Navigation";
@@ -6,7 +7,10 @@ import SelectComponent from "./SelectComponent";
 import sortIcon from '../images/icon-sort.jpg';
 
 
+
 const ClientsList = (props) => {
+
+    const navigate = useNavigate();
 
     const [list, setList] = useState();
     const [orderBy, setOrderBy] = useState("nome");
@@ -17,14 +21,14 @@ const ClientsList = (props) => {
         props.context.actions.getClients(orderBy, direction)
             .then(res => {
                 if (res !== null) {
-                    console.log('setting list')
                     setList(res)
                 } else {
                     console.log('No Shops found')
                 }
             })
             .catch(err => {
-                console.log(err.message)
+                console.log(err.message);
+                navigate("/error");
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [orderBy, direction])
@@ -52,8 +56,7 @@ const ClientsList = (props) => {
                     formatDate={props.context.actions.formatDate}
                 />
             </div>
-        </React.Fragment>
-            
+        </React.Fragment> 
     )
 }
 

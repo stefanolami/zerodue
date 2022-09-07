@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
-import {useNavigate, useParams} from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Form from "./Form";
-import FormTest from "./FormTest";
 import Navigation from "./Navigation";
 
 const UpdateShop = (props) => {
@@ -21,14 +20,14 @@ const UpdateShop = (props) => {
                 .then(res => {
                     if (res === true) {
                         setSubmitted('Negozio Aggiornato!')
-                        setTimeout(() => navigate(`/shop/${id}`), 1500)
+                        setTimeout(() => navigate(-1, { replace: true }), 1500)
                     } else if (res.status === 400) {
                         setErrors("Inserisci un nome");
                     }
                 })
                 .catch(err => {
-                    console.log(err);
-                    /* navigate('/error'); */
+                    console.log(err.message);
+                    navigate('/error');
                 })
         } else {
             setErrors("Inserisci un nome");

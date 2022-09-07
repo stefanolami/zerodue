@@ -12,26 +12,6 @@ const AdvancedSearch = (props) => {
     const [shopsList, setShopsList] = useState();
     const [showList, setShowList] = useState(false);
 
-
-    /* const submit = (e) => {
-        e.preventDefault();
-        const shop = {
-            nome, indirizzo, cap, città, provincia, regione, email, telefono, telefonoReferente, contattato, riContattato, compra, imbustato, sfuso, note
-        }
-        props.context.actions.searchAdvanced(shop)
-            .then(res => {
-                if (res === null) {
-                    navigate("/notfound")
-                } else {
-                    props.context.actions.setShopsList(res)
-                    navigate("/search")
-                }
-
-            })
-            .catch(err => console.log(err.message))
-        console.log("searched")
-    } */
-
     const submit = (e, shop) => {
         e.preventDefault();
         let query = `?1=1`;
@@ -90,7 +70,10 @@ const AdvancedSearch = (props) => {
                     setShopsList(res)
                 }
             })
-            .catch(err => console.log(err.message))
+            .catch(err => {
+                console.log(err.message);
+                navigate('/error');
+            })
         navigate({
             pathname: '/advanced-search',
             search: `${query}`
@@ -114,8 +97,10 @@ const AdvancedSearch = (props) => {
                         setShopsList(res)
                     }
                 })
-                .catch(err => console.log(err.message))
-            console.log("searched on render")
+                .catch(err => {
+                    console.log(err.message);
+                    navigate("/error")
+                })
             setShowList(true);
         } else {
             setShopsList(null);
@@ -140,7 +125,6 @@ const AdvancedSearch = (props) => {
                     />
                 )
             }
-            
             {
                 showList ? (
                     <ShopsList
@@ -152,7 +136,6 @@ const AdvancedSearch = (props) => {
                 )
             }
         </React.Fragment>
-        
     )
 }
 

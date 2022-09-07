@@ -21,18 +21,15 @@ const AddOrder = (props) => {
         props.context.actions.createOrder(fullOrder)
         .then(res => {
             if (res.status === 201) {
-                navigate(`/orders-history/${id}`)
+                navigate(-1, { replace: true });
             } else if (res.status === 400) {
-                console.log(res);
                 navigate('/error')
             }
         })
         .catch(err => {
-            console.log(err);
+            console.log(err.message);
+            navigate('/error')
         })
-        
-            
-        
     }
 
     return (
@@ -40,7 +37,7 @@ const AddOrder = (props) => {
             <Navigation />
             <FormOrders
                 submit={submit}
-             />
+            />
         </React.Fragment> 
     )
 }

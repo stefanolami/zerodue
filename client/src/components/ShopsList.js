@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,7 +15,6 @@ const ShopsList = (props) => {
             }
         } 
     }
-
 
     return (
         <div className="shops-list">

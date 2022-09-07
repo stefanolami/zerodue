@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import WithClickOutside from './WithClickOutside';
 
-import sortIcon from '../images/icon-sort.jpg';
 
 const SelectComponent = React.forwardRef( ({
     options,
@@ -31,8 +30,6 @@ const SelectComponent = React.forwardRef( ({
 
     const onInputClick = () => {
         setOpen(prevValue => !prevValue);
-        console.log(options)
-        console.log(Array.isArray(options))
     }
 
 
@@ -56,11 +53,6 @@ const SelectComponent = React.forwardRef( ({
                         {
                             inputValue ? <div onClick={clearDropdown} className="input-clear-div">x</div> : null
                         }
-                        {/* {
-                            filter ? (<div className="clients-list-sort">
-                                        <img src={sortIcon} alt="sort icon" onClick={() => direction === "ASC" ? setDirection("DESC") : setDirection("ASC")} />
-                                    </div>) : null
-                        } */}
                     </div>
                     <div className={`dropdown ${open ? "visible" : ""}`} id="dropdown" >
                         {

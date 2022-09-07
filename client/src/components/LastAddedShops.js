@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ShopsList from './ShopsList';
 import Navigation from './Navigation';
 import SelectComponent from './SelectComponent';
 
 
+
 const LastAddedShops = (props) => {
+
+    const navigate = useNavigate();
 
     const [limit, setLimit] = useState(10);
     const [list, setList] = useState();
@@ -15,7 +19,6 @@ const LastAddedShops = (props) => {
         props.context.actions.getLastAdded(limit)
             .then(res => {
                 if (res !== null) {
-                    console.log('setting list')
                     setList(res)
                 } else {
                     console.log('No Shops found')
@@ -23,6 +26,7 @@ const LastAddedShops = (props) => {
             })
             .catch(err => {
                 console.log(err.message)
+                navigate("/error");
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [limit])

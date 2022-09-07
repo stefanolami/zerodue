@@ -28,7 +28,6 @@ const Form = (props) => {
     const [sfuso, setSfuso] = useState();
     const [note, setNote] = useState();
 
-    /* const [selectedOption] = useState(""); */
 
     const submit = (e) => {
         e.preventDefault();
@@ -37,30 +36,6 @@ const Form = (props) => {
         }
         props.submit(e, shop);
     }
-
-    /* const fixDate = (date) => {
-        console.log('date',date)
-        let subDate = date.substring(0, 10);
-        console.log('subDate',subDate)
-        let lastDayString = subDate.slice(9);
-        console.log('lastdaystring',lastDayString)
-        let lastDayInt = parseInt(lastDayString);
-        if (lastDayInt === 9) {
-            lastDayInt += 1;
-            let newDayString = lastDayInt.toString();
-            let newSubDate = subDate.substring(0, 8);
-            let newDate = newSubDate.concat('', newDayString);
-            
-            return newDate;
-        } else {
-            lastDayInt += 1;
-            let newDayString = lastDayInt.toString();
-            let newSubDate = subDate.substring(0, 9);
-            let newDate = newSubDate.concat('', newDayString);
-            
-            return newDate;
-        }  
-    } */
 
     const fixDate = (date) => {
         let subDate = date.substring(0, 10);
@@ -175,7 +150,6 @@ const Form = (props) => {
         if (props.update) {
             props.getShop(props.id)
             .then(res => {
-                console.log(res)
                 if (res !== null) {
                     setNome(res[0].nome);
                     setIndirizzo(res[0].indirizzo);
@@ -248,14 +222,10 @@ const Form = (props) => {
                             value={provincia || ""}
                             label="Provincia"
                         />
-                        {/* <input type="text" placeholder="Provincia" id="prov" value={provincia || ""} onChange={(e) => setProvincia(e.target.value)} />
-                        <input type="text" placeholder="Regione" id="reg" value={regione || ""} onChange={(e) => setRegione(e.target.value)} /> */}
-                        
                         <label>&nbsp;Note 
                             <textarea className="textarea" value={note || ""} onChange={(e) => setNote(e.target.value)}>
                             </textarea>
                         </label>
-                        
                     </div>
                     <div className="form-div-2">
                         <label>&nbsp;Email 
@@ -316,7 +286,6 @@ const Form = (props) => {
                                     <span className="radio-span no">No</span>
                                 </div>
                             </label>
-                            
                         </div>
                             {
                                 contattato === 1 ? (

@@ -18,8 +18,10 @@ const Search = (props) => {
         e.preventDefault();
         props.context.actions.searchShops(newQuery)
             .then(res => setShopsList(res))
-            .catch(err => console.log(err.message))
-        console.log("searched");
+            .catch(err => {
+                console.log(err.message);
+                navigate("/error");
+            })
         navigate({
             pathname: '/search',
             search: `${newQuery}`
@@ -37,8 +39,10 @@ const Search = (props) => {
                         setShopsList(res)
                     }
                 })
-                .catch(err => console.log(err.message))
-            console.log("searched on render")
+                .catch(err => {
+                    console.log(err.message);
+                    navigate("/error")
+                })
         } else {
             setShopsList(null)
         }
@@ -54,7 +58,10 @@ const Search = (props) => {
                     <input type="text" className="search-input" placeholder="Search" onChange={(e) => setQuery(e.target.value)} />
                     <button type="submit" className="search-btn"><img src={searchIcon} alt="Search icon" className="searchIcon" /></button>
                 </form>
-                <ShopsList list={shopsList} />
+                <ShopsList 
+                    list={shopsList} 
+                    formatDate={props.context.actions.formatDate}
+                />
             </div>
         </React.Fragment>
     )

@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import italia from '../geography';
 
 import Navigation from "./Navigation";
 import ShopsList from './ShopsList';
 
 const SearchByPlace = (props) => {
+
+    const navigate = useNavigate();
     
-    const [regioni, setRegioni] = useState(italia);
+    const [regioni] = useState(italia);
     const [province, setProvince] = useState([]);
-    const [shopsList, setShopsList] = useState();
 
     const showCities = (reg, index) => {
         setProvince(regioni.italia[reg]);
@@ -17,7 +19,10 @@ const SearchByPlace = (props) => {
     const showShops = (prov) => {
         props.context.actions.getShopsByPlace(prov)
             .then(res => props.context.actions.setShopsListByPlace(res))
-            .catch(err => console.log(err.message))
+            .catch(err => {
+                console.log(err.message);
+                navigate("/error");
+            })
     }
 
     return (

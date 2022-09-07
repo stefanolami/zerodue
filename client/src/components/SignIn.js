@@ -14,13 +14,12 @@ const SignIn = (props) => {
         props.context.actions.signIn(username, password)
             .then(res => {
                 if (res !== null) {
-                    console.log('Sign in successful');
                     navigate("/")
                 } else {
                     setError("Sign in was unsuccessful")
-                    console.log("Sign in was unsuccessful");
                 }
             })
+            .catch(err => console.log(err.message))
     }
 
     return (

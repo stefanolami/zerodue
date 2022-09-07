@@ -28,14 +28,7 @@ const OrdersHistory = (props) => {
             })
 
         props.context.actions.getOrders(id)
-            .then(res => {
-                console.log(res)
-                if (res !== null) {
-                    setOrdersList(res)
-                } /* else if (res.status === ) {
-                    navigate('/notfound')
-                } */
-            })
+            .then(res => setOrdersList(res))
             .catch(err => {
                 console.log(err.message)
                 navigate('/error')
@@ -50,7 +43,10 @@ const OrdersHistory = (props) => {
             <div className="orders-history">
                 <Link to={`/shop/${id}`}><h3>{name}</h3></Link>
                 <h4>Storico Ordini</h4>
-                <OrdersList list={ordersList} />
+                <OrdersList 
+                    list={ordersList} 
+                    formatDate={props.context.actions.formatDate}
+                />
                 <Link to={`/add-order/${id}`}>
                     <button className="add-order-btn">Aggiungi Ordine</button>
                 </Link>

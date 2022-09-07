@@ -8,8 +8,7 @@ const NotFound = () => {
     const navigate = useNavigate();
 
     window.onpopstate = () => {
-        console.log('going back')
-        navigate("/");
+        navigate(-1, { replace: true });
     }
 
     return (
