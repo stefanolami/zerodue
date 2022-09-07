@@ -28,6 +28,10 @@ const Search = (props) => {
         })
     }
 
+    /** 
+     * Checks on render for the existence of a search query in the current url,
+     *  if it finds it calls searchShops with the given query, otherwise get ready for a new search
+     */
     useEffect(() => {
 
         if (window.location.search) {

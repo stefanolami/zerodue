@@ -5,6 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ShopsList = (props) => {
 
+    /** 
+     * Checks the length of a given string, in case it's too long cuts the end of it
+     * @param  {string}  string
+     * @return  {string}  string
+     */
     const checkString = (string) => {
         if (string) {
             if (string.length > 25) {

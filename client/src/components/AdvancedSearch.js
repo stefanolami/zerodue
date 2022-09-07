@@ -12,6 +12,11 @@ const AdvancedSearch = (props) => {
     const [shopsList, setShopsList] = useState();
     const [showList, setShowList] = useState(false);
 
+    /** 
+     * Submit function, creates a query string based on the given shop parameters
+     * @param  {object}  shop
+     * Calls the searchAdvanced function with the created query, and sets the showList state to true in order to show the liost and hide the form
+     */
     const submit = (e, shop) => {
         e.preventDefault();
         let query = `?1=1`;
@@ -86,6 +91,10 @@ const AdvancedSearch = (props) => {
         setShowList(false);
     }
 
+    /** 
+     * Checks on render for the existence of a search query in the current url,
+     *  if it finds it calls searchAdvanced with the given query, otherwise get ready for a new search
+     */
     useEffect(() => {
 
         if (window.location.search) {

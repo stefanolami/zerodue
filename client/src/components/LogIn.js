@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const SignIn = (props) => {
+const LogIn = (props) => {
 
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
@@ -11,10 +11,10 @@ const SignIn = (props) => {
 
     const submit = (e) => {
         e.preventDefault();
-        props.context.actions.signIn(username, password)
+        props.context.actions.logIn(username, password)
             .then(res => {
                 if (res !== null) {
-                    navigate("/")
+                    navigate("/home")
                 } else {
                     setError("Sign in was unsuccessful")
                 }
@@ -26,18 +26,18 @@ const SignIn = (props) => {
         <React.Fragment>
             {
                 !error ? (
-                    <React.Fragment></React.Fragment>
+                    null
                 ) : (
                     <div className="validationErrors">
                         <h3>{error}</h3>
                     </div>
                 )
             }
-            <div className="signInDiv">
+            <div className="logInDiv">
                 <form className="sign-in-form" onSubmit={(e) => submit(e)}>
                     <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
                     <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Log In</button>
                 </form>
             </div>
         </React.Fragment>
@@ -45,4 +45,4 @@ const SignIn = (props) => {
     )
 }
 
-export default SignIn;
+export default LogIn;

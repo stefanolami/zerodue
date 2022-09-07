@@ -1,5 +1,10 @@
 export default class Methods {
 
+  /** 
+  * Helper Function used to make API calls
+  * @param  {string}  path - relative path to the API endpoint
+  * @return  {function}  fetch - fetch with the desired options
+  */
   api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
     const url = 'http://localhost:5000/api' + path;
   

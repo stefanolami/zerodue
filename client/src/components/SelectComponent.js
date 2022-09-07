@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import WithClickOutside from './WithClickOutside';
 
 
+/** 
+ * Utility Component used in the Form Component, consisting in a dropdown select input
+ */
 const SelectComponent = React.forwardRef( ({
     options,
     onChange,

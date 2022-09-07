@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+/** 
+ * Utility Component used in the SelectComponent Component, allowing the menu to close when the user clicks outside
+ */
 export default function WithClickOutside (WrappedComponent) {
     const Component = (props) => {
 

@@ -17,7 +17,7 @@ const Shop = (props) => {
             .then(res => {
                 if (res === true) {
                     setSubmitted('Negozio Cancellato!')
-                    setTimeout(() => navigate("/"), 1500)
+                    setTimeout(() => navigate("/home"), 1500)
                 } else {
                     navigate('/error');
                 }
@@ -27,17 +27,6 @@ const Shop = (props) => {
                 navigate('/error')
             })
         }
-    }
-
-    const formatDate = (date) => {
-        const newDate = new Date(date);
-        let day = newDate.getDate();
-        if (day < 10) day = "0" + day;
-        let month = newDate.getMonth() + 1;
-        if (month < 10) month = "0" + month;
-        const year = newDate.getFullYear();
-        const finalDate = day + '/' + month + '/' + year;
-        return finalDate;
     }
 
     useEffect(() => {
@@ -55,8 +44,6 @@ const Shop = (props) => {
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    
 
     return (
         <React.Fragment>
@@ -140,7 +127,7 @@ const Shop = (props) => {
                                                     shop.ultimo_contatto && shop.contattato === 1 ? (
                                                         <div id="ultimo-contatto-div">
                                                             <p><strong>Ultimo Contatto</strong></p>
-                                                            <span>{formatDate(shop.ultimo_contatto)}</span>
+                                                            <span>{props.context.actions.formatDate(shop.ultimo_contatto)}</span>
                                                         </div>
                                                     ) : (null)
                                                 }

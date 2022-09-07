@@ -4,7 +4,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const {asyncHandler} = require('../middleware/async-handler');
-const { authenticateUsers } = require('../middleware/auth-user');
 
 
 

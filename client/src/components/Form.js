@@ -37,6 +37,12 @@ const Form = (props) => {
         props.submit(e, shop);
     }
 
+    /** 
+     * This function fixes a problem I was having with MySQL that I couldn't fix on the server side, in which every date sent back from the server would go back 1 day.
+     * Takes a date and after a series of conditional statements adds 1 day.
+     * @param  {date}  date
+     * @return  {date}  newDate
+     */
     const fixDate = (date) => {
         let subDate = date.substring(0, 10);
         let lastDayString = subDate.slice(8);
@@ -146,6 +152,10 @@ const Form = (props) => {
         }          
     }
 
+    /** 
+     * On render checks for the update prop, if it's true calls the getShop function
+     * with the given id and assigns the shop values to the component state which will be assigned to the form inputs values
+     */
     useEffect(() => {
         if (props.update) {
             props.getShop(props.id)
@@ -187,7 +197,7 @@ const Form = (props) => {
             <h2>{props.title}</h2>
             {
                 !props.errors ? (
-                    <React.Fragment></React.Fragment>
+                    null
                 ) : (
                     <div className="validationErrors">
                         <h3>Errore di Validazione</h3>

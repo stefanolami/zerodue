@@ -19,28 +19,7 @@ export class Provider extends Component {
     }
 
     createShop = async (shop) => {
-        const newShop = await this.apiMethods.createShop(shop);
-        if (this.state.lastAdded.length > 5) {
-            let newArray = this.state.lastAdded;
-            newArray.shift();
-            newArray.push(shop);
-            this.setState(() => {
-                return {
-                    lastAdded: newArray
-                }
-            });
-            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 360});
-        } else {
-            let newArray = this.state.lastAdded;
-            newArray.push(shop);
-            this.setState(() => {
-                return {
-                    lastAdded: newArray
-                }
-            });
-            Cookies.set('lastAdded', JSON.stringify(newArray), {expires: 360});
-        }
-        return newShop;
+        return await this.apiMethods.createShop(shop);
     }
 
     getShop = async (id) => {
@@ -83,7 +62,13 @@ export class Provider extends Component {
         return await this.apiMethods.getLastAdded(limit);
     }
 
-    signIn = async (username, password) => {
+    /** 
+     * Checks for the user in the database, saves it in the context state and on a Cookie
+     * @param  {string}  username
+     * @param  {string}  password
+     * @return  {object}  user
+     */
+    logIn = async (username, password) => {
         const user = await this.apiMethods.getUser(username, password);
         if (user !== null) {
             user.password = password;
@@ -99,7 +84,7 @@ export class Provider extends Component {
         return user;
     }
 
-    signOut = () => {
+    logOut = () => {
         this.setState(() => {
             return {
                 authenticatedUser: null
@@ -116,6 +101,11 @@ export class Provider extends Component {
         })
     }
 
+    /** 
+     * Changes the format of a given date
+     * @param  {date}  date
+     * @return  {string}  finalDate
+     */
     formatDate = (date) => {
         const newDate = new Date(date);
         let day = newDate.getDate();
@@ -142,8 +132,8 @@ export class Provider extends Component {
                 searchAdvanced: this.searchAdvanced,
                 deleteShop: this.deleteShop,
                 updateShop: this.updateShop,
-                signIn: this.signIn,
-                signOut: this.signOut,
+                logIn: this.logIn,
+                logOut: this.logOut,
                 formatDate: this.formatDate,
                 createOrder: this.createOrder,
                 getOrders: this.getOrders,

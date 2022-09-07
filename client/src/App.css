@@ -927,6 +927,36 @@ td {
 }
 
 
+/* Welcome */
+
+.welcome {
+  width: 40%;
+  margin: 50px auto;
+}
+
+.welcome p {
+  font-size: 1.3rem;
+  margin: 50px 0; 
+}
+
+.welcome button {
+  width: 30%;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: var(--color-green);
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.welcome button:hover,
+.welcome button:focus {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px 23px;
+}
+
+
 /* Errors */
 
 .validationErrors {

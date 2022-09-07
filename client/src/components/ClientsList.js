@@ -17,6 +17,9 @@ const ClientsList = (props) => {
     const [direction, setDirection] = useState("ASC");
     const [orderByOptions] = useState(["nome", "città", "provincia", "regione", "email", "ultimo contatto"]);
 
+    /** 
+     * Calls the getClients function on render with the default parameters
+     */
     useEffect(() => {
         props.context.actions.getClients(orderBy, direction)
             .then(res => {
