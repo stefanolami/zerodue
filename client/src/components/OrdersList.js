@@ -11,7 +11,7 @@ const OrdersList = (props) => {
                         <thead>
                             <tr>
                                 <th>Data Ordine</th>
-                                <th>Codice Fattura</th>
+                                <th>Numero Fattura</th>
                                 <th>Data Fattura</th>
                             </tr>
                         </thead>

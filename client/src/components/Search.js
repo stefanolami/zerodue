@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from './Navigation';
 import ShopsList from './ShopsList';
@@ -56,6 +57,9 @@ const Search = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Search</title>
+            </Helmet>
             <Navigation />
             <div className="search">
                 <form className="search-div" spellCheck="false" onSubmit={(e) => searchShops(e, query)}>

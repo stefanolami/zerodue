@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from "./Navigation"
 import FormOrders from "./FormOrders"
@@ -34,6 +35,9 @@ const AddOrder = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Add Order</title>
+            </Helmet>
             <Navigation />
             <FormOrders
                 submit={submit}

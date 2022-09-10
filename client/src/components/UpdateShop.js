@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Form from "./Form";
 import Navigation from "./Navigation";
@@ -8,6 +9,7 @@ const UpdateShop = (props) => {
 
     const navigate = useNavigate();
 
+    const [name, setName] = useState();
     const [errors, setErrors] = useState();
     const [submitted, setSubmitted] = useState(false);
 
@@ -34,8 +36,31 @@ const UpdateShop = (props) => {
         }
     }
 
+    useEffect(() => {
+        props.context.actions.getShop(id)
+            .then(res => {
+                if (res !== null) {
+                    setName(res[0].nome)
+                } else {
+                    navigate('notfound')
+                }
+            })
+            .catch(err => {
+                console.log(err.message);
+                navigate('/error')
+            })
+        // eslint-disable-next-line
+    }, [])
+
     return (
         <React.Fragment>
+            {
+                name ? (
+                    <Helmet>
+                        <title>{`ZeroDue - ${name} - Update`}</title>
+                    </Helmet>
+                ) : null
+            }
             <Navigation />
             <Form
                 submit={submit}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from "./Navigation";
 
@@ -51,6 +52,9 @@ const Shop = (props) => {
             {
                 shop ? (
                     <React.Fragment>
+                        <Helmet>
+                            <title>{`ZeroDue - ${shop.nome}`}</title>
+                        </Helmet>
                         <div className="shop">
                             <h3>{shop.nome}</h3>
                             <div className="shop-div">

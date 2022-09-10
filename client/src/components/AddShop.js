@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from "./Navigation";
 import Form from "./Form";
@@ -36,6 +37,9 @@ const AddShop = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Add Shop</title>
+            </Helmet>
             <Navigation />
             <Form 
                 submit={submit}

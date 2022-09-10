@@ -26,7 +26,7 @@ const FormOrders = (props) => {
                     <label>&nbsp;Data Fattura
                         <input type="date" onChange={(e) => setInvoiceDate(e.target.value)} />
                     </label>
-                    <label>&nbsp;Codice Fattura
+                    <label>&nbsp;Numero Fattura
                         <input type="text" onChange={(e) => setInvoiceCode(e.target.value)} />
                     </label>
                     

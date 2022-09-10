@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from './Navigation';
 import OrdersList from './OrdersList';
@@ -14,6 +15,7 @@ const OrdersHistory = (props) => {
     const [ordersList, setOrdersList] = useState();
 
     useEffect(() => {
+
         props.context.actions.getShop(id)
             .then(res => {
                 if (res !== null) {
@@ -33,12 +35,14 @@ const OrdersHistory = (props) => {
                 console.log(err.message)
                 navigate('/error')
             })
-            
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>{`ZeroDue - ${name} - Orders History`}</title>
+            </Helmet>
             <Navigation />
             <div className="orders-history">
                 <Link to={`/shop/${id}`}><h3>{name}</h3></Link>

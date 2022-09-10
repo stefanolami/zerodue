@@ -5,7 +5,7 @@ export default class Methods {
   * @param  {string}  path - relative path to the API endpoint
   * @return  {function}  fetch - fetch with the desired options
   */
-  api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
+  api(path, method = 'GET', body = null) {
     const url = 'http://localhost:5000/api' + path;
   
     const options = {
@@ -71,8 +71,8 @@ export default class Methods {
     }
   }
 
-  async searchAdvanced(query) {
-    const response = await this.api(`/advsearch${query}`);
+  async searchAdvanced(orderBy, direction, query) {
+    const response = await this.api(`/advsearch/${orderBy}/${direction}${query}`, 'GET');
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -80,6 +80,7 @@ export default class Methods {
       return null;
     }
     else {
+      console.log("error")
       throw new Error();
     }
   }

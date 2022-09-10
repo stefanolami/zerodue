@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 import ShopsList from "./ShopsList";
 import Navigation from "./Navigation";
@@ -15,7 +16,7 @@ const ClientsList = (props) => {
     const [list, setList] = useState();
     const [orderBy, setOrderBy] = useState("nome");
     const [direction, setDirection] = useState("ASC");
-    const [orderByOptions] = useState(["nome", "città", "provincia", "regione", "email", "ultimo contatto"]);
+    const [orderByOptions] = useState(["nome", "indirizzo", "città", "ultimo contatto"]);
 
     /** 
      * Calls the getClients function on render with the default parameters
@@ -38,6 +39,9 @@ const ClientsList = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Clients List</title>
+            </Helmet>
             <Navigation />
             <div className="clients-list">
                 <h2 className="clients-list-title">Lista Clienti</h2>

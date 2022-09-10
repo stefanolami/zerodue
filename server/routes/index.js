@@ -87,7 +87,7 @@ router.get('/search', asyncHandler( async (req, res) => {
 }))
 
 
-router.get('/advsearch', asyncHandler( async (req, res) => {
+router.get('/advsearch/:orderBy/:direction', asyncHandler( async (req, res) => {
     let dbQuery = 'SELECT * FROM shops WHERE 1=1';
     let inputs = [];
 
@@ -156,6 +156,9 @@ router.get('/advsearch', asyncHandler( async (req, res) => {
         dbQuery += ' AND note LIKE "%' + req.query.note + '%"';
         inputs.push(req.query.note);
     }
+
+    dbQuery += ` ORDER BY ${req.params.orderBy} ${req.params.direction}`;
+    inputs.push(req.params.orderBy, req.params.direction);
 
     db.query(dbQuery, inputs, (err, result) => {
             if (err) {

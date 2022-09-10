@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import ShopsList from './ShopsList';
 import Navigation from './Navigation';
@@ -34,6 +35,9 @@ const LastAddedShops = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Last Added</title>
+            </Helmet>
             <Navigation />
             <h2 className="last-added-title">Ultimi Aggiunti</h2>
             <div className="list-filter">

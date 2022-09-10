@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import filterIcon from '../images/advanced-search.png';
 import searchIcon from "../images/search.png";
@@ -13,6 +14,9 @@ const Home = (props) => {
 
     return (
         <div className="home">
+            <Helmet>
+                <title>ZeroDue - Home</title>
+            </Helmet>
             <Link to="/search">
                 <div>
                     <img src={searchIcon} alt="search icon" />

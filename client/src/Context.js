@@ -34,8 +34,8 @@ export class Provider extends Component {
         return await this.apiMethods.searchShops(query);
     }
 
-    searchAdvanced = async (query) => {
-        return await this.apiMethods.searchAdvanced(query);
+    searchAdvanced = async (orderBy, direction, query) => {
+        return await this.apiMethods.searchAdvanced(orderBy, direction, query);
     }
 
     deleteShop = async (id) => {

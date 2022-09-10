@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const LogIn = (props) => {
 
@@ -24,6 +25,9 @@ const LogIn = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Log In</title>
+            </Helmet>
             {
                 !error ? (
                     null

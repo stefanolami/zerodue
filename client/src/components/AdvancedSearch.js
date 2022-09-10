@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import Navigation from "./Navigation";
 import Form from "./Form";
 import ShopsList from "./ShopsList";
+import SelectComponent from "./SelectComponent";
+import sortIcon from '../images/icon-sort.jpg';
 
 const AdvancedSearch = (props) => {
 
@@ -11,6 +14,10 @@ const AdvancedSearch = (props) => {
 
     const [shopsList, setShopsList] = useState();
     const [showList, setShowList] = useState(false);
+    const [orderBy, setOrderBy] = useState("ultimo contatto");
+    const [direction, setDirection] = useState("ASC");
+    const [orderByOptions] = useState(["nome", "indirizzo", "città", "ultimo contatto"]);
+
 
     /** 
      * Submit function, creates a query string based on the given shop parameters
@@ -19,6 +26,7 @@ const AdvancedSearch = (props) => {
      */
     const submit = (e, shop) => {
         e.preventDefault();
+
         let query = `?1=1`;
 
         if (shop.nome) {
@@ -67,7 +75,15 @@ const AdvancedSearch = (props) => {
             query += `&note=${shop.note}`;
         }
 
-        props.context.actions.searchAdvanced(query)
+        let newOrderBy;
+        
+        if (orderBy === "ultimo contatto") {
+            newOrderBy = "ultimo_contatto"
+        } else {
+            newOrderBy = orderBy
+        }
+    
+        props.context.actions.searchAdvanced(newOrderBy, direction, query)
             .then(res => {
                 if (res === null) {
                     navigate("/notfound")
@@ -80,7 +96,7 @@ const AdvancedSearch = (props) => {
                 navigate('/error');
             })
         navigate({
-            pathname: '/advanced-search',
+            pathname: `/advanced-search`,
             search: `${query}`
         })
         setShowList(true);
@@ -98,7 +114,14 @@ const AdvancedSearch = (props) => {
     useEffect(() => {
 
         if (window.location.search) {
-            props.context.actions.searchAdvanced(window.location.search)
+            let newOrderBy;
+        
+            if (orderBy === "ultimo contatto") {
+                newOrderBy = "ultimo_contatto"
+            } else {
+                newOrderBy = orderBy
+            }
+            props.context.actions.searchAdvanced(newOrderBy, direction, window.location.search)
                 .then(res => {
                     if (res === null) {
                         navigate("/notfound")
@@ -117,10 +140,13 @@ const AdvancedSearch = (props) => {
         }
         
         // eslint-disable-next-line
-    }, [window.location.search])
+    }, [window.location.search, orderBy, direction])
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>ZeroDue - Advanced Search</title>
+            </Helmet>
             <Navigation />
             {
                 showList ? (
@@ -136,10 +162,25 @@ const AdvancedSearch = (props) => {
             }
             {
                 showList ? (
-                    <ShopsList
-                        list={shopsList} 
-                        formatDate={props.context.actions.formatDate}
-                    />
+                    <React.Fragment>
+                        <div className="clients-list-selectors">
+                            <div className="list-filter clients">
+                                <SelectComponent
+                                    options={orderByOptions}
+                                    onChange={(item) => setOrderBy(item)}
+                                    value={orderBy || ""}
+                                    label="Ordina"
+                                />
+                            </div>
+                            <div className="clients-list-sort">
+                                <img src={sortIcon} alt="sort icon" onClick={() => direction === "ASC" ? setDirection("DESC") : setDirection("ASC")} />
+                            </div>
+                        </div>
+                        <ShopsList
+                            list={shopsList} 
+                            formatDate={props.context.actions.formatDate}
+                        />
+                    </React.Fragment>
                 ) : (
                     null
                 )
